@@ -1,9 +1,14 @@
-.body {
-    background-color: #ffe6e6;
+html {
+    height: 100%;
+}
+
+body {
+    background-color: #f6f1F1;
+    height: 100%;
 }
 
 .header {
-    background-color: #fff;
+    background-color: #f6f1F1;
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -30,4 +35,81 @@
 
 .error {
     border-color: red;
+}
+
+.wrapper {
+    display: flex;
+    height: 100%;
+}
+
+.left {
+    width: 60%;
+}
+
+.right {
+    width: 30%;
+}
+
+.ticket {
+    background-color: #AFD3E2;
+    width: 80%;
+    height: 60%;
+    border-radius: 7px;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 50px;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 30px;
+    font-size: 25px;
+}
+
+.queue {
+    background-color: #AFD3E2;
+    width: 100%;
+    height: 45%;
+    border-radius: 7px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 30px;
+    font-size: 25px;
+    overflow-y: scroll;
+}
+
+.student-name {
+    background-color: #AFD3E2;
+    border-radius: 7px;
+    margin: 50px 10% -20px;
+    width: 50%;
+    height: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 20px;
+    font-size: 25px;
+}
+
+.buttons {
+    text-align: center;
+}
+
+button {
+    margin: auto;
+    background-color: #19A7CE;
+    border: none;
+    border-radius: 7px;
+    display: inline-block;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    margin-right: 20px;
+}
+
+.teacher-buttons {
+    margin-top: 140px;
+}
+
+button:hover {
+    background-color: #146C94;
+    cursor: pointer;
 }
