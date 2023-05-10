@@ -3,16 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <title>Логин</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="reg_log_styles.css">
 </head>
 <body>
-    <form id="login-form">
-        <label for="username">Имя пользователя:</label>
-        <input type="text" id="username" name="username">
-        <br>
-        <label for="password">Пароль:</label>
-        <input type="password" id="password" name="password">
-        <br>
-        <button type="submit" id="login-btn">Войти</button>
-    </form>
+<div class="page-container">
+    <div class="card">
+        <div class="card-header">
+            <h1 class="form-name">Войти</h1>
+        </div>
+        <div class="card-body">
+            <form class="form-flex">
+                <input class="inp-round" type="email" name="email" placeholder="email">
+                <input class="inp-round" type="password" name="password" placeholder="password">
+                <button class="submit-btn" type="submit">Войти</button>
+            </form>
+        </div>
+        <div class="card-footer">
+            <p>Нет аккаунта? <a href="register.html">Зарегистрируйтесь</a> </p>
+        </div>
+    </div>
+</div>
 </body>
 </html>
