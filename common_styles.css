@@ -114,3 +114,17 @@ button:hover {
     background-color: #146C94;
     cursor: pointer;
 }
+
+
+.page-container {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.page-block {
+    background-color: white;
+    padding: 20px;
+    border-radius: 20px;
+}

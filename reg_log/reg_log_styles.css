@@ -1,11 +1,8 @@
 
 
 .card {
-    background-color: white;
     height: fit-content;
     width: 400px;
-    padding: 20px;
-    border-radius: 20px;
 }
 
 .card-footer {
@@ -17,12 +14,6 @@
 }
 
 
-.page-container {
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
 
 .inp-round {
     margin: 10px;
