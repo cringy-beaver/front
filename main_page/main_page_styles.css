@@ -1,0 +1,27 @@
+.card {
+    height: fit-content;
+    width: 600px;
+    align-items: center;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.card h1 {
+    font-size: 3em;
+    margin-bottom: 2em;
+    margin-top: 2em;
+}
+
+.card button {
+    font-size: 1.3em;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    margin-bottom: 1em;
+}
+
+.card .buttons {
+    padding-bottom: 2em;
+}
