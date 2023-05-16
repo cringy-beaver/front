@@ -5,6 +5,7 @@
     <title>Title</title>
     <link rel="stylesheet" href="../common_styles.css">
     <link rel="stylesheet" href="exam_room_styles.css">
+    <link rel="stylesheet" href="file_input_styles.css">
 </head>
 <body>
 <div class="page-container">
@@ -15,7 +16,8 @@
         <div class="room-question-settings">
             <div class="room-questions">
                 <div class="questions-header">
-                    <h4>Билеты</h4>
+                    <h3>Билеты</h3>
+
                 </div>
                 <div class="questions">
                     <div class="question">
@@ -32,12 +34,59 @@
                             <img src="../source/images/comment_icon.svg" style="width: 20px" hidden="hidden">
                         </div>
                     </div>
+                    <div class="question">
+                        <img src="../source/images/q1.png">
+                        <div class="q-description">
+                            <h5>Билет 3</h5>
+                            <img src="../source/images/comment_icon.svg" style="width: 20px" hidden="hidden">
+                        </div>
+                    </div>
+                    <div class="question">
+                        <img src="../source/images/q1.png">
+                        <div class="q-description">
+                            <h5>Билет 4</h5>
+                            <img src="../source/images/comment_icon.svg" style="width: 20px" hidden="hidden">
+                        </div>
+                    </div>
+                    <div class="question">
+                        <img src="../source/images/q1.png">
+                        <div class="q-description">
+                            <h5>Билет 5</h5>
+                            <img src="../source/images/comment_icon.svg" style="width: 20px" hidden="hidden">
+                        </div>
+                    </div>
 
+                </div>
+                <div class="add-questions">
+                    <form method="post" enctype="multipart/form-data">
+                        <label class="input-file">
+                            <span class="input-file-text" type="text" id="input-file-text"></span>
+                            <input type="file" name="file" accept=".rar" onchange="document.getElementById('input-file-text').textContent = this.files[0].name;">
+                            <span class="input-file-btn">Выберите .rar архив с билетами</span>
+                        </label>
+
+                        <button class="button" type="submit">Добавить билеты</button>
+                    </form>
                 </div>
             </div>
             <div class="room-settings">
                 <div class="settings-header">
-                    <h4>Параметры комнаты</h4>
+                    <h3>Параметры комнаты</h3>
+                </div>
+                <div class="settings">
+                    <form>
+                        <label>
+                            Максимальное количество студентов
+                            <input type="number">
+                        </label><br>
+                        <label>
+                            Описание комнаты
+
+                            <textarea></textarea>
+                        </label>
+
+                        <button class="button">Создать комнату</button>
+                    </form>
                 </div>
             </div>
         </div>

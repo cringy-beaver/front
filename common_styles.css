@@ -5,8 +5,9 @@ html {
 body {
     background-color: #f6f1F1;
     height: 100%;
-    font-family: "Trebuchet MS" , serif;
+    font-family: "Trebuchet MS", serif;
 }
+
 .header {
     background-color: #146C94;
     height: 5em;
@@ -127,6 +128,6 @@ button:hover {
 
 .page-block {
     background-color: white;
-    padding: 20px;
+    padding: 10px;
     border-radius: 20px;
 }
