@@ -5,6 +5,7 @@
     <title>Логин</title>
     <link rel="stylesheet" href="../common_styles.css">
     <link rel="stylesheet" href="reg_log_styles.css">
+<!--    <script src="reg_log_scripts.js"></script>-->
 </head>
 <body>
 <div class="page-container">
@@ -13,16 +14,17 @@
             <h1 class="form-name">Войти</h1>
         </div>
         <div class="card-body">
-            <form class="form-flex">
-                <input class="inp-round" type="email" name="email" placeholder="email" required>
-                <input class="inp-round" type="password" name="password" placeholder="password" required>
-                <button class="submit-btn" type="submit">Войти</button>
+            <form class="form-flex" id="loginForm">
+                <input class="inp-round" type="text" name="text-login" placeholder="Введите логин" required>
+                <input class="inp-round" type="password" name="password-login" placeholder="Введите пароль" required>
+                <button class="submit-btn" type="submit" name="login-btn" id="login-btn">Войти</button>
             </form>
         </div>
         <div class="card-footer">
             <p>Нет аккаунта? <a href="register.html">Зарегистрируйтесь</a> </p>
         </div>
     </div>
+    <script src="reg_log_scripts.js"></script> <!-- TODO: swap to DOMContentLoaded in script, costil' now-->
 </div>
 </body>
 </html>

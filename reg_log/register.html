@@ -5,6 +5,7 @@
     <title>Регистрация</title>
     <link rel="stylesheet" href="../common_styles.css">
     <link rel="stylesheet" href="reg_log_styles.css">
+    <script src="reg_log_scripts.js"></script>
 </head>
 <body>
 <div class="page-container">
@@ -13,7 +14,7 @@
             <h1 class="form-name">Регистрация</h1>
         </div>
         <div class="card-body">
-            <form class="form-flex">
+            <form class="form-flex" id="regForm">
 
                 <input class="inp-round" type="email" name="email" placeholder="email" required>
                 <input class="inp-round" type="text" name="name" placeholder="Имя" required>
@@ -32,7 +33,7 @@
                 </div>
                 <input class="inp-round" type="password" name="password" placeholder="password" required>
                 <input class="inp-round" type="password" name="repeated-password" placeholder="repeat password" required>
-                <button class="submit-btn" type="submit">Зарегистрироваться</button>
+                <button class="submit-btn" type="submit" id="reg-btn">Зарегистрироваться</button>
             </form>
         </div>
         <div class="card-footer">
