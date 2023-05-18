@@ -9,8 +9,7 @@
 .create-room {
     display: flex;
     flex-direction: column;
-
-    height: 90%;
+    margin-top: 5em;
 }
 
 .room-questions {
@@ -89,7 +88,4 @@
 .add-questions {
     margin-top: auto;
     padding: 10px;
-}
-
-.create-room-header h2 {
 }
