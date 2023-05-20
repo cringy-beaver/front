@@ -43,43 +43,25 @@
     width: 95%;
 }
 
-.error {
-    border-color: red;
+.input-error {
+    border: 2px solid red;
+    border-radius: 5px;
 }
 
-/* Стили для модального окна */
-.modal {
-    display: none; /* Скрыть модальное окно по умолчанию */
-    position: fixed; /* Фиксированное положение */
-    z-index: 1; /* Поверх всего остального */
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto; /* Добавить прокрутку, если контент не помещается */
-    background-color: rgba(0,0,0,0.4); /* Черный полупрозрачный фон */
+.password-requirements {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 1px 1px 3px rgba(0,0,0,0.3);
 }
-
-/* Стиль для содержимого модального окна */
-.modal-content {
-    background-color: #fefefe;
-    margin: 15% auto; /* 15% от верха окна */
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%; /* Ширина содержимого */
+.password-requirements li {
+    margin: 5px 0;
 }
-
-/* Стили для кнопки закрытия модального окна */
-.close {
-    color: #aaaaaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-    color: #000;
-    text-decoration: none;
-    cursor: pointer;
+.hidden {
+    display: none;
 }
