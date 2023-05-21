@@ -25,21 +25,9 @@ loginInput.addEventListener('focus', function (){
 regBtn.addEventListener('click', async function(event) {
     event.preventDefault();
     const formData = new FormData(regForm); // TODO: согласовать со Степой, формДата требует переаботки
-    const password = formData.get('password');
-    if (!checkPassword(password)) {
-        passwordInput.classList.add('input-error');
-        passwordInput.value = '';
-        passwordInput.placeholder = 'Пароль не соблюдает критерии';
-        repeatInput.value = '';
-    } else if (formData.get("password") !== formData.get("repeated-password")){
-        for (let pw of passwords){
-            pw.classList.add('input-error')
-            pw.value = ''
-        }
-        passwordInput.placeholder = ''
-        repeatInput.placeholder = 'Пароли не совпадают'
-    }
+    checkPasswords()
     const login = formData.get('login');
+    const password = formData.get('password');
     const name = formData.get('name');
     const second_name = formData.get('lastname');
     const role = formData.get('role');
@@ -50,17 +38,31 @@ regBtn.addEventListener('click', async function(event) {
         if (response.redirected){
             window.location.href = response.url;
         } else if (response.status === 405) {
-            for (let pw of passwords){
-                pw.classList.add('input-error');
-                pw.value = '';
-            }
             loginInput.classList.add('input-error');
+            loginInput.placeholder = 'Такой логин уже используется'
+            loginInput.value = '';
             passwordInput.value = 'Неверный логин или пароль';
         }
     }).catch(error => {
         alert(error.code) // TODO: логирование ошибок
     })
 });
+
+function checkPasswords() {
+    if (!checkPassword(passwordInput.value)) {
+        passwordInput.classList.add('input-error');
+        passwordInput.value = '';
+        passwordInput.placeholder = 'Пароль не соблюдает критерии';
+        repeatInput.value = '';
+    } else if (passwordInput.value !== repeatInput.value){
+        for (let pw of passwords){
+            pw.classList.add('input-error')
+            pw.value = ''
+        }
+        passwordInput.placeholder = ''
+        repeatInput.placeholder = 'Пароли не совпадают'
+    }
+}
 
 
 function showPasswordRequirements() {
