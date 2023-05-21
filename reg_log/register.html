@@ -5,7 +5,7 @@
     <title>Регистрация</title>
     <link rel="stylesheet" href="../common_styles.css">
     <link rel="stylesheet" href="reg_log_styles.css">
-    <script src="reg_log_scripts.js"></script>
+<!--    <script src="reg_scripts.js"></script>-->
 </head>
 <body>
 <div class="page-container">
@@ -16,30 +16,46 @@
         <div class="card-body">
             <form class="form-flex" id="regForm">
 
-                <input class="inp-round" type="email" name="email" placeholder="email" required>
+                <input class="inp-round" type="text" name="login" placeholder="Логин" required>
                 <input class="inp-round" type="text" name="name" placeholder="Имя" required>
                 <input class="inp-round" type="text" name="lastname" placeholder="Фамилия" required>
-                <input class="inp-round" type="text" name="name" placeholder="Отчество" required>
                 <div style="margin: 0 15px 10px 15px">
                     <p>Ваша роль на экзамене</p>
                     <label>
-                        <input type="radio" name="role" value="tutor" checked required>
+                        <input type="radio" name="role" value="student" checked required>
                         Студент
                     </label>
                     <label>
-                        <input type="radio" name="role" value="tutor">
+                        <input type="radio" name="role" value="teacher">
                         Преподаватель
                     </label>
                 </div>
-                <input class="inp-round" type="password" name="password" placeholder="password" required>
-                <input class="inp-round" type="password" name="repeated-password" placeholder="repeat password" required>
-                <button class="submit-btn" type="submit" id="reg-btn">Зарегистрироваться</button>
+                <input class="inp-round" type="password" name="password" id="password" placeholder="Пароль" required>
+                <input class="inp-round" type="password" name="password" id="repeat" placeholder="Повторите пароль" required>
+                <div id="password-requirements" class="password-requirements hidden">
+                    <ul>
+                        <li>Длина должна быть не менее 8 символов</li>
+                        <li>Должна быть хотя бы одна заглавная буква</li>
+                        <li>Должна быть хотя бы одна строчная буква</li>
+                        <li>Должна быть хотя бы одна цифра</li>
+                        <li>Могут использоваться только символы: A-Za-z0-9@#$%^&+=</li>
+                    </ul>
+                </div>
+                <button class="submit-btn" type="submit" name="reg-btn" id="reg-btn">Зарегистрироваться</button>
             </form>
         </div>
         <div class="card-footer">
             <p>Уже регистрировались? <a href="login.html">Войдите в аккаунт</a> </p>
         </div>
     </div>
+    <script src="reg_scripts.js"></script>
 </div>
+
+<!--<div id="myModal" class="modal">-->
+<!--    <div class="modal-content">-->
+<!--        <span class="close">&times;</span>-->
+<!--        <p>Содержимое модального окна здесь</p>-->
+<!--    </div>-->
+<!--</div>-->
 </body>
 </html>
