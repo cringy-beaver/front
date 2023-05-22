@@ -1,4 +1,4 @@
-class Room {
+export class Room {
     constructor(teacherName, roomName, capacity, tickets) {
         this.teacherName = teacherName;
         this.roomName = roomName;
@@ -13,5 +13,13 @@ class Room {
 
     getRoomName() {
         return this.roomName;
+    }
+
+    getRandomTicket() {
+
+    }
+
+    getQueue() {
+
     }
 }
