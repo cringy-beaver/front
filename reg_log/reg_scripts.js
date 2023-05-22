@@ -1,4 +1,5 @@
 const LOGIN_ALREADY_USED = 303 // TODO: change
+const SERVER = 'http://exam4u.ru:5001'
 
 const regForm = document.querySelector("#regForm");
 const regBtn = document.querySelector("#reg-btn");
@@ -25,7 +26,10 @@ loginInput.addEventListener('focus', function (){
 regBtn.addEventListener('click', async function(event) {
     event.preventDefault();
     const formData = new FormData(regForm); // TODO: согласовать со Степой, формДата требует переаботки
-    checkPasswords()
+    if (!checkPasswords()){
+        return;
+    }
+    debugger;
     const login = formData.get('login');
     const password = formData.get('password');
     const name = formData.get('name');
@@ -50,18 +54,22 @@ regBtn.addEventListener('click', async function(event) {
 
 function checkPasswords() {
     if (!checkPassword(passwordInput.value)) {
+        debugger;
         passwordInput.classList.add('input-error');
         passwordInput.value = '';
         passwordInput.placeholder = 'Пароль не соблюдает критерии';
         repeatInput.value = '';
+        return false;
     } else if (passwordInput.value !== repeatInput.value){
         for (let pw of passwords){
-            pw.classList.add('input-error')
-            pw.value = ''
+            pw.classList.add('input-error');
+            pw.value = '';
         }
-        passwordInput.placeholder = ''
-        repeatInput.placeholder = 'Пароли не совпадают'
+        passwordInput.placeholder = '';
+        repeatInput.placeholder = 'Пароли не совпадают';
+        return false;
     }
+    return true;
 }
 
 
@@ -81,7 +89,7 @@ function closeModalOnClickOutside(event) {
 }
 
 function checkPassword(password) {
-    const requirements = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])[A-Za-z0-9@#$%^&+=]{8,20}$/;
+    const requirements = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[A-Za-z0-9@#$%^&+=]{8,20}$/;
     return requirements.test(password);
 }
 

@@ -1,4 +1,4 @@
-const SERVER = '128.0.0.1'
+const SERVER = 'http://exam4u.ru:5001'
 
 const loginForm = document.querySelector("#loginForm");
 const loginBtn = document.querySelector("#login-btn");
