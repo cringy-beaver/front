@@ -3,7 +3,7 @@ import { Room } from './room.js';
 const questions = document.querySelector('.questions');
 const uploadButton = document.querySelector('#upload-button');
 const createButton = document.querySelector('#create-button');
-let tickets = [];
+let tickets = [[], {}];
 uploadButton.addEventListener('click', async () => {
     const fileInput = document.querySelector('#input-file');
     const file = fileInput.files[0];
@@ -70,22 +70,13 @@ function createPicture(name, source) {
 }
 
 createButton.addEventListener("click", async function (e) {
-    let user = 0;
-    await fetch(`${SERVER}/user_info?token=${getCookie('token')}`, {
-        method: 'GET',
-    }).then(response => {
-        if (response.code === 200){
-            user = response.json().user;
-        } else {
-            throw new Error(response.code);
-        }
-    }).catch(error => {
-        alert(error.code) // TODO: логирование ошибок
-    })
+    e.preventDefault();
     const createForm = document.querySelector('#create-form');
     const formData = new FormData(createForm);
-    const room = new Room(`${user.name} ${user.second_name}`, formData.get('room-name'), formData.get('student-count'), tickets)
-    localStorage.setItem()
+    const userJSON = JSON.parse(localStorage.getItem('user'));
+    const room = new Room(`${userJSON.name} ${userJSON.second_name}`, formData.get('room-name'), formData.get('student-count'), tickets[0], tickets[1])
+    localStorage.setItem('room', JSON.stringify(room.toJSON()));
+    window.location.href='../exam_room/teacher.html';
 })
 
 function getCookie(name) {

@@ -7,10 +7,6 @@ const passwordInput = document.querySelector('#loginForm input[name="password"]'
 loginBtn.addEventListener('click', async function(event) {
     event.preventDefault();
     const queryString = new URLSearchParams(new FormData(loginForm)).toString();
-    let pretest = await fetch(`${SERVER}/signin?${queryString}`, {
-        method: 'POST',
-    });
-    let test = await pretest.json();
     await fetch(`${SERVER}/signin?${queryString}`, {
         method: 'POST',
     }).then(async function(response){
@@ -18,8 +14,9 @@ loginBtn.addEventListener('click', async function(event) {
             const responseJSON = await response.json()
             localStorage.setItem('token', responseJSON.access_token);
             localStorage.setItem('ttl', responseJSON.time_left);
-            // localStorage.setItem()
-            window.location.href = '../exam_room/student.html';
+            localStorage.setItem('user', JSON.stringify(responseJSON.user))
+            window.location.href = (responseJSON.user.role === 'student') ? '../exam_room/student.html'
+                : '../exam_room/create_exam_room.html';
         } else if (response.status === 401 || response.status === 402) {
             const inputs = document.querySelectorAll('#loginForm input')
             for (let input of inputs){
