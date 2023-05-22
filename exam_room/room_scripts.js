@@ -17,7 +17,7 @@ uploadButton.addEventListener('click', async () => {
         const links = await uploadZip(file);
         tickets = links;
         for (let i = 0; i < links.length; i++){
-            questions.append(createPicture(i, links[i]));
+            questions.append(createPicture(Object.keys(links[1])[i], links[0][i]));
         }
     } catch (error) {
         alert(error.message);
@@ -48,14 +48,14 @@ async function uploadZip(file) {
         }
 
         const jsonResponse = await response.json();
-        return jsonResponse.links;
+        return [jsonResponse.links, jsonResponse.original_to_unique_names];
     } catch (error) {
         console.error(`Error: ${error.message}`);
         throw new Error('An error occurred while uploading the file');
     }
 }
 
-function createPicture(number, source) {
+function createPicture(name, source) {
     const newDiv = document.createElement('div');
     newDiv.setAttribute('class', 'question');
     const img = document.createElement('img');
@@ -63,7 +63,7 @@ function createPicture(number, source) {
     newDiv.append(img);
     const innerDiv = document.createElement('q-description');
     const heading = document.createElement('h5');
-    heading.textContent = `Билет ${number+1}`;
+    heading.textContent = name;
     innerDiv.append(heading);
     newDiv.append(innerDiv);
     return newDiv;

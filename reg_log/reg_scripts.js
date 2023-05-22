@@ -25,33 +25,19 @@ loginInput.addEventListener('focus', function (){
 
 regBtn.addEventListener('click', async function(event) {
     event.preventDefault();
-    const formData = new FormData(regForm); // TODO: согласовать со Степой, формДата требует переаботки
     if (!checkPasswords()){
         return;
     }
-    let pw = formData.get('password');
-    formData.delete('password');
-    formData.set('password', pw);
-    formData.set('redirect_url', 'http://localhost:63342/front/reg_log/login.html')
-    // const formDataDict = {'login': formData.get('login'), 'password': formData.get('password'), 'name': formData.get('name'),
-    // 'second_name': formData.get('lastname'), 'role': formData.get('role'), 'redirect_url': 'login.html'}
-    // const login = formData.get('login');
-    // const password = formData.get('password');
-    // const name = formData.get('name');
-    // const second_name = formData.get('lastname');
-    // const role = formData.get('role');
-
-    await fetch(getSource(formData), {
+    const queryString = new URLSearchParams(new FormData(regForm)).toString();
+    await fetch(`${SERVER}/register?${queryString}`, {
         method: 'POST',
     }).then(response => {
-        if (response.redirected){
-            debugger;
-            window.location.href = response.url;
+        if (response.ok){
+            window.location.href = '../reg_log/login.html';
         } else if (response.status === 405) {
             loginInput.classList.add('input-error');
             loginInput.placeholder = 'Такой логин уже используется'
             loginInput.value = '';
-            passwordInput.value = 'Неверный логин или пароль';
         }
     }).catch(error => {
         alert(error.code) // TODO: логирование ошибок
@@ -60,7 +46,6 @@ regBtn.addEventListener('click', async function(event) {
 
 function checkPasswords() {
     if (!checkPassword(passwordInput.value)) {
-        debugger;
         passwordInput.classList.add('input-error');
         passwordInput.value = '';
         passwordInput.placeholder = 'Пароль не соблюдает критерии';
