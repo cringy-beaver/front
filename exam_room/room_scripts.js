@@ -1,5 +1,9 @@
+import { Room } from './room.js';
+
 const questions = document.querySelector('.questions');
 const uploadButton = document.querySelector('#upload-button');
+const createButton = document.querySelector('#create-button');
+let tickets = [];
 uploadButton.addEventListener('click', async () => {
     const fileInput = document.querySelector('#input-file');
     const file = fileInput.files[0];
@@ -11,6 +15,7 @@ uploadButton.addEventListener('click', async () => {
 
     try {
         const links = await uploadZip(file);
+        tickets = links;
         for (let i = 0; i < links.length; i++){
             questions.append(createPicture(i, links[i]));
         }
@@ -22,8 +27,6 @@ uploadButton.addEventListener('click', async () => {
 async function uploadZip(file) {
     const formData = new FormData();
     formData.append('file', file);
-
-    console.log('Uploading file: ' + file);
 
     try {
         const response = await fetch('http://exam4u.ru:5555/pics/upload', {
@@ -45,7 +48,6 @@ async function uploadZip(file) {
         }
 
         const jsonResponse = await response.json();
-        debugger;
         return jsonResponse.links;
     } catch (error) {
         console.error(`Error: ${error.message}`);
@@ -65,4 +67,30 @@ function createPicture(number, source) {
     innerDiv.append(heading);
     newDiv.append(innerDiv);
     return newDiv;
+}
+
+createButton.addEventListener("click", async function (e) {
+    let user = 0;
+    await fetch(`${SERVER}/user_info?token=${getCookie('token')}`, {
+        method: 'GET',
+    }).then(response => {
+        if (response.code === 200){
+            user = response.json().user;
+        } else {
+            throw new Error(response.code);
+        }
+    }).catch(error => {
+        alert(error.code) // TODO: логирование ошибок
+    })
+    const createForm = document.querySelector('#create-form');
+    const formData = new FormData(createForm);
+    const room = new Room(`${user.name} ${user.second_name}`, formData.get('room-name'), formData.get('student-count'), tickets)
+    localStorage.setItem()
+})
+
+function getCookie(name) {
+    let matches = document.cookie.match(new RegExp(
+        "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
+    ));
+    return matches ? decodeURIComponent(matches[1]) : undefined;
 }

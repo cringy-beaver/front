@@ -8,10 +8,11 @@ loginBtn.addEventListener('click', async function(event) {
     let login = formData.get('text-login')
     let password = formData.get('password-login')
 
-    await fetch(`${SERVER}/signin?login=${login}&password=${password}&role=student`, {
+    await fetch(`${SERVER}/signin?login=${login}&password=${password}&redirect_url=http://localhost:63342/front/exam_room/student.html?_ijt=b3kf9ltthijg6rf6rkmfh3n9mj}`, {
         method: 'POST',
     }).then(response => {
         if (response.redirected){
+            debugger;
             const resp = response.json()
             document.cookie = `token=${resp.access_token}; ttl=${resp.time_left};`;
             window.location.href = response.url;

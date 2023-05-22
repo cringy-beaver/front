@@ -29,17 +29,23 @@ regBtn.addEventListener('click', async function(event) {
     if (!checkPasswords()){
         return;
     }
-    debugger;
-    const login = formData.get('login');
-    const password = formData.get('password');
-    const name = formData.get('name');
-    const second_name = formData.get('lastname');
-    const role = formData.get('role');
+    let pw = formData.get('password');
+    formData.delete('password');
+    formData.set('password', pw);
+    formData.set('redirect_url', 'http://localhost:63342/front/reg_log/login.html')
+    // const formDataDict = {'login': formData.get('login'), 'password': formData.get('password'), 'name': formData.get('name'),
+    // 'second_name': formData.get('lastname'), 'role': formData.get('role'), 'redirect_url': 'login.html'}
+    // const login = formData.get('login');
+    // const password = formData.get('password');
+    // const name = formData.get('name');
+    // const second_name = formData.get('lastname');
+    // const role = formData.get('role');
 
-    await fetch(`${SERVER}/register?login=${login}&password=${password}&name=${name}&second_name=${second_name}&role=${role}`, {
+    await fetch(getSource(formData), {
         method: 'POST',
     }).then(response => {
         if (response.redirected){
+            debugger;
             window.location.href = response.url;
         } else if (response.status === 405) {
             loginInput.classList.add('input-error');
@@ -105,5 +111,13 @@ function normalizePasswordsAndLogin(){
     if (loginInput.classList.contains('input-error')) {
         loginInput.classList.remove('input-error');
     }
+}
+
+function getSource(formData) {
+    let source = `${SERVER}/register?`
+    for (const pair of formData.entries()) {
+        source = `${source}${pair[0]}=${pair[1]}&`;
+    }
+    return source.slice(0, -1);
 }
 
