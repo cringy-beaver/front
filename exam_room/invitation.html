@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Вступить в комнату</title>
+    <link rel="stylesheet" href="../common_styles.css">
+    <script src="../jquery-3.7.0.js"></script>
+    <script>
+        $(function(){
+            $("#header").load("../header.html");
+        });
+    </script>
+</head>
+<body>
+<div id="header"></div>
+<div class="page-container">
+    <div class="page-block card">
+        <div class="card-header">
+            <h3>Вступить в группу {название комнаты}</h3>
+        </div>
+        <div class="card-body">
+            <p>Имя преподавателя: {имя преподавателя}</p>
+        </div>
+        <div class="card-footer">
+            <div class="buttons">
+                <button>Отменить</button>
+                <button>Вступить в группу</button>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
