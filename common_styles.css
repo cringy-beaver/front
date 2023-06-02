@@ -42,9 +42,9 @@ body {
 }
 
 .wrapper {
+    margin-top: 5em;
     display: flex;
     height: 100%;
-    margin-top: 5em;
 }
 
 .left {
@@ -131,4 +131,11 @@ button:hover {
     background-color: white;
     padding: 10px;
     border-radius: 20px;
+}
+
+#header {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 5em;
 }
