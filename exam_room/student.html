@@ -3,15 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <title>Ваш билет</title>
-    <link rel="stylesheet" href="../common_styles.css">ipt> 
+    <link rel="stylesheet" href="../common_styles.css">
+    <link rel="stylesheet" href="invitation.css">
 </head>
 <body>
     <object seamless type="text/html" data="../header.html" width="100%" height=100px id="header"></object>
 
 <div class="wrapper">
+    <div id="error-window" hidden>
+        <div id="error-window-content">
+            <p id="error-window-message"></p>
+            <button id="error-window-close">Close</button> <!-- Doesn't work rn !-->
+        </div>
+    </div>
     <div class="left">
-        <div class="ticket">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
+        <div class="main-ticket">
+            <img src="../source/images/q1.png" alt="На пересдачу" id="ticket-image"> <!-- Make hidden firstly !-->
+            <p class="main-ticket-name" id="ticket-text">lorem ipsum</p>
+            </div>
         </div>
     </div>
     
@@ -29,8 +38,10 @@
         <div class="buttons">
             <button id="join" class="button" onclick="">Записаться</button>
             <button id="retract" class="button" onclick="">Отменить</button>
+            <button id="get-ticket" class="button" onclick="">Взять билет</button>
         </div>
     </div>
+    <script type="module" src="student.js"></script>
 </div>
 </body>
 </html>

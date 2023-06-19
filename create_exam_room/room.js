@@ -1,13 +1,19 @@
+import {User} from "../exam_room/user";
+
 export class Room {
-    constructor(owner, queue, submitUser, usersNotQueue, id) {
-        this.owner = owner;
-        this.queue = queue;
-        this.submitUser = submitUser;
-        this.usersNotQueue = usersNotQueue;
-        this.id = id;
+    constructor(obj) {
+        this.owner = new User(obj.owner);
+        this.queue = obj.queue.map(function(q) {
+            return new User(q);
+        });
+        this.submitUser = new User(obj.submitting_user);
+        this.usersNotQueue = obj.users_not_in_queue.map(function(q) {
+            return new User(q);
+        });
+        this.id = obj.id;
     }
 
-    static fromResponse(obj){
-        return new Room(obj.owner, obj.queue, obj.submitUser, obj.usersNotQueue, obj.id)
+    getId() {
+        return this.id;
     }
 }

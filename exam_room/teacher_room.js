@@ -1,4 +1,4 @@
-import * as r from './room.js';
+import {Room} from '../create_exam_room/room.js';
 
 let roomStorage = JSON.parse(localStorage.getItem('room'));
 let room = {};
@@ -31,6 +31,6 @@ function createRoomParser(jsonEvent){
     if (jsonEvent['status'] === 'FAILURE') {
         alert(jsonEvent['message'])
     } else {
-        room = r.Room.fromResponse(JSON.parse(jsonEvent.data))
+        room = new Room((JSON.parse(jsonEvent.data)))
     }
 }

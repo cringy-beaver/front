@@ -1,7 +1,6 @@
-
-var overlay = document.querySelector(".overlay");
-var modal = document.querySelector(".modal");
-var closeModalBtn = document.querySelector(".close");
+const overlay = document.querySelector(".overlay");
+const modal = document.querySelector(".modal");
+const closeModalBtn = document.querySelector(".close");
 
 for (let question of document.getElementsByClassName("question")) {
     question.onclick = function() {
