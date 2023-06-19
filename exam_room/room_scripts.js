@@ -3,7 +3,7 @@ import { Room } from './room.js';
 const questions = document.querySelector('.questions');
 const uploadButton = document.querySelector('#upload-button');
 const createButton = document.querySelector('#create-button');
-let tickets = [[], {}];
+let tickets = [];
 uploadButton.addEventListener('click', async () => {
     const fileInput = document.querySelector('#input-file');
     const file = fileInput.files[0];
@@ -14,10 +14,10 @@ uploadButton.addEventListener('click', async () => {
     }
 
     try {
-        const links = await uploadZip(file);
-        tickets = links;
-        for (let i = 0; i < links.length; i++){
-            questions.append(createPicture(Object.keys(links[1])[i], links[0][i]));
+        const linksArray = await uploadZip(file);
+        tickets = linksArray;
+        for (let i = 0; i < linksArray.length; i++){
+            questions.append(createPicture(linksArray[i]['name'], linksArray[i]['url']));
         }
     } catch (error) {
         alert(error.message);
@@ -29,7 +29,7 @@ async function uploadZip(file) {
     formData.append('file', file);
 
     try {
-        const response = await fetch('http://exam4u.ru:5555/pics/upload', {
+        const response = await fetch('http://exam4u.site:5555/pics/upload', {
             method: 'POST',
             body: formData,
         });
@@ -48,7 +48,16 @@ async function uploadZip(file) {
         }
 
         const jsonResponse = await response.json();
-        return [jsonResponse.links, jsonResponse.original_to_unique_names];
+        let res = [];
+        for (let i = 0; i < jsonResponse.links; i++) {
+            let name = jsonResponse.original_to_unique_names.keys[i]
+            res.push({
+                'name': name,
+                'url': jsonResponse.links[i],
+                'description': jsonResponse.original_to_unique_names[name],
+            })
+        }
+        return res;
     } catch (error) {
         console.error(`Error: ${error.message}`);
         throw new Error('An error occurred while uploading the file');
@@ -74,14 +83,13 @@ createButton.addEventListener("click", async function (e) {
     const createForm = document.querySelector('#create-form');
     const formData = new FormData(createForm);
     const userJSON = JSON.parse(localStorage.getItem('user'));
-    const room = new Room(`${userJSON.name} ${userJSON.second_name}`, formData.get('room-name'), formData.get('student-count'), tickets[0], tickets[1])
-    localStorage.setItem('room', JSON.stringify(room.toJSON()));
+    let roomStorage =
+        {
+            name: `${userJSON.name} ${userJSON.second_name}`,
+            room: formData.get('room-name'),
+            capacity: formData.get('student-count'),
+            tickets: tickets
+        }
+    localStorage.setItem('room', JSON.stringify(roomStorage));
     window.location.href='../exam_room/teacher.html';
 })
-
-function getCookie(name) {
-    let matches = document.cookie.match(new RegExp(
-        "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
-    ));
-    return matches ? decodeURIComponent(matches[1]) : undefined;
-}
