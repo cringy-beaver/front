@@ -6,4 +6,12 @@ export class User {
         this.task = obj.task || '';
         this.taskTime = obj.taskTime || '';
     }
+
+    getName() {
+        return this.name;
+    }
+
+    getSecondName() {
+        return this.secondName;
+    }
 }

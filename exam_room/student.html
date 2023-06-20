@@ -5,6 +5,7 @@
     <title>Ваш билет</title>
     <link rel="stylesheet" href="../common_styles.css">
     <link rel="stylesheet" href="invitation.css">
+    <link rel="stylesheet" href="room.css">
 </head>
 <body>
     <object seamless type="text/html" data="../header.html" width="100%" height=100px id="header"></object>
@@ -17,7 +18,8 @@
         </div>
     </div>
     <div class="left">
-        <div class="main-ticket">
+        <div class="main-ticket hidden">
+            <button id="myButton" onclick="myFunction()">Нажми меня</button>
             <img src="../source/images/q1.png" alt="На пересдачу" id="ticket-image"> <!-- Make hidden firstly !-->
             <p class="main-ticket-name" id="ticket-text">lorem ipsum</p>
             </div>
@@ -25,14 +27,8 @@
     </div>
     
     <div class="right">
-        <div class="queue">
-            1. Иван Иванов<br><hr>
-            2. Пётр Петров<br><hr>
-            3. Иван Иванов<br><hr>
-            4. Пётр Петров<br><hr>
-            5. Иван Иванов<br><hr>
-            6. Пётр Петров<br><hr>
-            7. Иван Иванов<br><hr>
+        <div class="queue scroll" id="queue">
+            <p> 1. Иван Иванов </p>
         </div>
         
         <div class="buttons">

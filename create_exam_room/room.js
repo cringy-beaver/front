@@ -16,4 +16,8 @@ export class Room {
     getId() {
         return this.id;
     }
+
+    getQueue() {
+        return this.queue;
+    }
 }

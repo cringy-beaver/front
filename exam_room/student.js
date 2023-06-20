@@ -38,10 +38,19 @@ function joinRoomParser(jsonEvent){
         window.location.href = `invitation.html?message=${jsonEvent['message']}`
     } else {
         room = new Room(JSON.parse(jsonEvent.data))
-        // TODO отрисовка комнаты
         if (jsonEvent['status'] === 'REDIRECT') {
             showModalWindow('', 300)
         }
+        updateQueue();
+    }
+}
+
+function updateQueue(){
+    const queue = document.querySelector('#queue');
+    for (let user in room.getQueue()) {
+        let newParagraph = document.createElement('p');
+        newParagraph.textContent = `${user.getName()} ${user.getSecondName()}`
+        queue.appendChild(newParagraph);
     }
 }
 
