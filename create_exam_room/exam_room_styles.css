@@ -1,5 +1,4 @@
 
-
 .room-question-settings {
     height: 90%;
     width: auto;
@@ -13,7 +12,7 @@
 }
 
 .room-questions {
-    max-width: 900px;
+    max-width: 100%;
     min-width: 600px;
     width: fit-content;
     display: flex;
@@ -22,6 +21,7 @@
 
 .room-settings {
     width: 300px;
+    max-width: 100%;
     display: flex;
     flex-direction: column;
 }
@@ -79,14 +79,12 @@
     margin-bottom: 5px;
 }
 
+@media only screen and (max-width: 768px) {
+    .room-question-settings {
+        flex-direction: column;
+    }
 
-
-.create-room-header {
-    border-bottom: solid gray 2px;
-    text-align: center;
-}
-
-.add-questions {
-    margin-top: auto;
-    padding: 10px;
+    .room-settings .button {
+        margin-top: 1em;
+    }
 }

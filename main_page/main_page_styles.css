@@ -1,6 +1,7 @@
 .card {
     height: fit-content;
     width: 600px;
+    max-width: 100%;
     align-items: center;
     text-align: center;
     display: flex;

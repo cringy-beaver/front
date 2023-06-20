@@ -54,3 +54,39 @@
 .input-file input[type=file]:disabled + .input-file-btn {
     background-color: #eee;
 }
+
+.create-room-header {
+    border-bottom: solid gray 2px;
+    text-align: center;
+}
+
+.add-questions {
+    margin-top: auto;
+    padding: 10px;
+}
+
+
+@media only screen and (max-width: 768px) {
+    .input-file {
+        display: block;
+    }
+
+    .input-file-btn {
+        clear: both;
+        display: block;
+        border-radius: 6px;
+        width: fit-content;
+        margin-bottom: 1em;
+    }
+
+    .input-file-text {
+        border-radius: 6px;
+        margin-bottom: 0.5em;
+    }
+
+    .add-questions .button {
+        margin-right: auto;
+    }
+
+    
+}
