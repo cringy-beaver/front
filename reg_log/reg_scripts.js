@@ -1,5 +1,5 @@
-const LOGIN_ALREADY_USED = 303 // TODO: change
-const SERVER = 'http://exam4u.ru:5001'
+const LOGIN_ALREADY_USED = 405 // TODO: change
+const SERVER = 'http://exam4u.site:5001'
 
 const regForm = document.querySelector("#regForm");
 const regBtn = document.querySelector("#reg-btn");
@@ -34,7 +34,7 @@ regBtn.addEventListener('click', async function(event) {
     }).then(response => {
         if (response.ok){
             window.location.href = '../reg_log/login.html';
-        } else if (response.status === 405) {
+        } else if (response.status === LOGIN_ALREADY_USED) {
             loginInput.classList.add('input-error');
             loginInput.placeholder = 'Такой логин уже используется'
             loginInput.value = '';

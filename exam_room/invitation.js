@@ -1,4 +1,4 @@
-import {showModalWindow} from "./modal_window";
+import {showModalWindow} from "./modal_window.js";
 
 const idField = document.querySelector("#id-field");
 const joinButton = document.querySelector("#join-btn");
@@ -11,5 +11,5 @@ if (urlParams.has('message')) {
 joinButton.addEventListener('click', joinGroup)
 function joinGroup(){
     const id = idField.value;
-    window.location.href = `student.html?id=${id}`;
+    window.location.href = `./student.html?id=${id}`;
 }
