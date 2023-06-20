@@ -1,4 +1,4 @@
-import {Room} from '../create_exam_room/room.js';
+import {Room} from './room.js';
 
 let roomStorage = JSON.parse(localStorage.getItem('room'));
 let room = {};
@@ -32,5 +32,9 @@ function createRoomParser(jsonEvent){
         alert(jsonEvent['message'])
     } else {
         room = new Room((JSON.parse(jsonEvent.data)))
+        const roomIdField = document.querySelector('#room-id');
+        const roomId = document.createElement('p');
+        roomId.textContent = room.getId();
+        roomIdField.appendChild(roomId);
     }
 }

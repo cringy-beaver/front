@@ -1,5 +1,3 @@
-import { Room } from './room.js';
-
 const questions = document.querySelector('.questions');
 const uploadButton = document.querySelector('#upload-button');
 const createButton = document.querySelector('#create-button');
@@ -49,12 +47,12 @@ async function uploadZip(file) {
 
         const jsonResponse = await response.json();
         let res = [];
-        for (let i = 0; i < jsonResponse.links; i++) {
-            let name = jsonResponse.original_to_unique_names.keys[i]
+        for (let i = 0; i < jsonResponse['links'].length; i++) {
+            let name = Object.keys(jsonResponse['original_to_unique_names'])[i]
             res.push({
                 'name': name,
-                'url': jsonResponse.links[i],
-                'description': jsonResponse.original_to_unique_names[name],
+                'url': jsonResponse['links'][i],
+                'description': jsonResponse['original_to_unique_names'][name],
             })
         }
         return res;

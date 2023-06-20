@@ -1,4 +1,4 @@
-import {Room} from '../create_exam_room/room.js';
+import {Room} from './room.js';
 import {showModalWindow} from "./modal_window";
 
 const urlParams = new URLSearchParams(window.location.search);

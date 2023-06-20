@@ -1,4 +1,4 @@
-import {User} from "../exam_room/user";
+import {User} from "./user";
 
 export class Room {
     constructor(obj) {
