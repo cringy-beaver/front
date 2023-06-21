@@ -1,7 +1,10 @@
-import {Room} from './room.js';
-import {showModalWindow} from "./modal_window.js";
-import {User} from "./user.js";
-import {checkToken, updateToken} from '../token_update.js'
+// import {Room} from '../structures/room.js';
+// import {showModalWindow} from "./modal_window.js";
+import {User} from "../structures/user.js";
+import {checkToken, updateToken} from '../../token_update.js'
+
+import {joinRoomAction} from './actions/act_join_room.js'
+import {getTaskAction} from './actions/act_get_task.js'
 
 checkToken();
 await updateToken();
@@ -33,40 +36,44 @@ socket.addEventListener('message', function (event) {
     let jsonEvent = JSON.parse(event.data)
     console.log(jsonEvent)
     switch (jsonEvent['action']) {
-        case 'join_room':
-            joinRoomParser(jsonEvent);
-            break;
+        // case 'join_room':
+        //     joinRoomParser(jsonEvent);
+        //     break;
         case 'get_task':
-            getTaskParser(jsonEvent);
-            break
+            getTaskAction(jsonEvent, room);
+            break;
         case 'join_queue':
-            joinQueueParser(jsonEvent)
+            joinQueueParser(jsonEvent);
+            break;
+        case 'join_room':
+            joinRoomAction(jsonEvent, room);
+            break;
         default:
             alert('Socket parser error!')
     }});
 
-function joinRoomParser(jsonEvent){
-    if (jsonEvent['status'] === 'FAILURE') {
-        window.location.href = `invitation.html?message=${jsonEvent['message']}`
-    } else {
-        room = new Room(JSON.parse(jsonEvent.data).room)
-        if (jsonEvent['status'] === 'REDIRECT') {
-            showModalWindow('', 300)
-        }
-        if (jsonEvent['message'] !== 'User joined'){
-            user = new User(JSON.parse(jsonEvent.data).user)
-        }
-        updateQueue();
-    }
-}
-
-function updateQueue(){
-    for (let user in room.getQueue()) {
-        let newParagraph = document.createElement('p');
-        newParagraph.textContent = `${user.getName()} ${user.getSecondName()}`
-        queue.appendChild(newParagraph);
-    }
-}
+// function joinRoomParser(jsonEvent){
+//     if (jsonEvent['status'] === 'FAILURE') {
+//         window.location.href = `invitation.html?message=${jsonEvent['message']}`
+//     } else {
+//         room = new Room(jsonEvent.data.room)
+//         if (jsonEvent['status'] === 'REDIRECT') {
+//             showModalWindow('', 300)
+//         }
+//         if (jsonEvent['message'] !== 'User joined'){
+//             user = new User(jsonEvent.data.user)
+//         }
+//         updateQueue();
+//     }
+// }
+//
+// function updateQueue(){
+//     for (let user in room.getQueue()) {
+//         let newParagraph = document.createElement('p');
+//         newParagraph.textContent = `${user.getName()} ${user.getSecondName()}`
+//         queue.appendChild(newParagraph);
+//     }
+// }
 
 function getTask(){
     const getTaskData = {

@@ -1,10 +1,12 @@
-import {Room} from './room.js';
-import {checkToken, updateToken} from '../token_update.js'
+import {Room} from '../structures/room.js';
+import {checkToken, updateToken} from '../../token_update.js'
 
 checkToken();
 await updateToken();
 let roomStorage = JSON.parse(localStorage.getItem('room'));
-let room = {};
+export let room = {};
+
+
 const roomIdField = document.querySelector('#room-id');
 const socket = new WebSocket('ws://exam4u.site:5002/');
 socket.addEventListener('open', socketCreateRoom);
@@ -31,6 +33,7 @@ function socketCreateRoom() {
 
 socket.addEventListener('message', function (event) {
     let jsonEvent = JSON.parse(event.data)
+    console.log(jsonEvent)
     switch (jsonEvent['action']){
         case 'create_room': createRoomParser(jsonEvent)
     }
@@ -40,7 +43,7 @@ function createRoomParser(jsonEvent){
     if (jsonEvent['status'] === 'FAILURE') {
         alert(jsonEvent['message'])
     } else {
-        const data = jsonEvent['data']['data'];
+        const data = jsonEvent['data'];
         room = new Room(data)
         const roomId = document.createElement('p');
         roomId.textContent = room.getId();

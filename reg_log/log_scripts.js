@@ -7,6 +7,7 @@ const passwordInput = document.querySelector('#loginForm input[name="password"]'
 loginBtn.addEventListener('click', async function(event) {
     event.preventDefault();
     const queryString = new URLSearchParams(new FormData(loginForm)).toString();
+    console.log(`${SERVER}/signin?${queryString}`);
     await fetch(`${SERVER}/signin?${queryString}`, {
         method: 'POST',
     }).then(async function(response){

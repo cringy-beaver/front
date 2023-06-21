@@ -11,5 +11,5 @@ if (urlParams.has('message')) {
 joinButton.addEventListener('click', joinGroup)
 function joinGroup(){
     const id = idField.value;
-    window.location.href = `./student.html?id=${id}`;
+    window.location.href = `student.html?id=${id}`;
 }
