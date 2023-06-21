@@ -12,12 +12,12 @@ export function joinRoomAction(jsonEvent, room){
     else {
         const data = jsonEvent['data'];
 
-        if (data.status === 'REDIRECT') {
+        if (jsonEvent['status'] === 'REDIRECT') {
             alert('REDIRECT');
         }
 
         if (data.room !== undefined) {
-            room = Room.fromJson(data.room);
+            room.updateRoom(Room.fromJson(data.room));
             const user = User.fromJson(data.user);
             UpdateNewRoom(room, user);
         } else {
@@ -35,14 +35,14 @@ function UpdateRoom(room, user) {
 
 function UpdateNewRoom(room, user) {
     // Вызывается при первом подключении к комнате юзера
-    alert('Room created');
+    alert('Joined room');
     updateQueue();
 }
 
 function updateQueue(){
-    for (let user in room.getQueue()) {
-        let newParagraph = document.createElement('p');
-        newParagraph.textContent = `${user.getName()} ${user.getSecondName()}`
-        queue.appendChild(newParagraph);
-    }
+    // for (let user in room.getQueue()) {
+    //     let newParagraph = document.createElement('p');
+    //     newParagraph.textContent = `${user.getName()} ${user.getSecondName()}`
+    //     queue.appendChild(newParagraph);
+    // }
 }

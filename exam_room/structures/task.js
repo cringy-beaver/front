@@ -6,6 +6,16 @@ export class Task {
     }
 
     static fromJson(json) {
-        return new Task(json.name, json.url, json.description);
+        let name;
+        let url;
+        let description;
+
+        if (json.name !== undefined && json.url !== undefined && json.description !== undefined) {
+            name = json.name;
+            url = json.url;
+            description = json.description;
+        }
+
+        return new Task(name, url, description);
     }
 }

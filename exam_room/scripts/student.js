@@ -1,16 +1,18 @@
-// import {Room} from '../structures/room.js';
+import {Room} from '../structures/room.js';
 // import {showModalWindow} from "./modal_window.js";
 import {User} from "../structures/user.js";
 import {checkToken, updateToken} from '../../token_update.js'
 
 import {joinRoomAction} from './actions/act_join_room.js'
 import {getTaskAction} from './actions/act_get_task.js'
+import {joinQueueAction} from './actions/act_join_queue.js'
+import {leaveQueueAction} from './actions/act_leave_queue.js'
 
 checkToken();
 await updateToken();
 
 const urlParams = new URLSearchParams(window.location.search);
-let room = {};
+let room = new Room(null, null, null, null, null)
 let user = {};
 const roomId = urlParams.get('id');
 const socket = new WebSocket('ws://exam4u.site:5002/');
@@ -19,6 +21,8 @@ const getBtn = document.querySelector('#get-ticket');
 getBtn.addEventListener('click', getTask);
 const joinBtn = document.querySelector('#join');
 joinBtn.addEventListener('click', joinQueue);
+const retractBtn = document.querySelector('#retract');
+retractBtn.addEventListener('click', leaveQueue);
 const queue = document.querySelector('#queue');
 
 function socketJoinRoom(){
@@ -43,10 +47,13 @@ socket.addEventListener('message', function (event) {
             getTaskAction(jsonEvent, room);
             break;
         case 'join_queue':
-            joinQueueParser(jsonEvent);
+            joinQueueAction(jsonEvent, room);
             break;
         case 'join_room':
             joinRoomAction(jsonEvent, room);
+            break;
+        case 'leave_queue':
+            leaveQueueAction(jsonEvent, room);
             break;
         default:
             alert('Socket parser error!')
@@ -80,24 +87,24 @@ function getTask(){
         'action': 'get_task',
         'token': localStorage.getItem('token'), // TODO check token live crate const
         'arg': {
-            'room_id' : room.getId()
+            'room_id' : room.id
         }
     }
     socket.send(JSON.stringify(getTaskData));
 }
 
-function getTaskParser(jsonEvent) {
-    if (jsonEvent['status'] === 'SUCCESS') {
-        const image = document.querySelector('#ticket-image');
-        const text = document.querySelector('#ticket-text');
-        const data = JSON.parse(jsonEvent.data)
-        image.src = data.url
-        image.alt = data.name
-        text.value = data.name
-    } else {
-        alert(jsonEvent['message'])
-    }
-}
+// function getTaskParser(jsonEvent) {
+//     if (jsonEvent['status'] === 'SUCCESS') {
+//         const image = document.querySelector('#ticket-image');
+//         const text = document.querySelector('#ticket-text');
+//         const data = JSON.parse(jsonEvent.data)
+//         image.src = data.url
+//         image.alt = data.name
+//         text.value = data.name
+//     } else {
+//         alert(jsonEvent['message'])
+//     }
+// }
 
 function joinQueueParser(jsonEvent){
     if (jsonEvent['message'] === 'SUCCESS') {
@@ -117,9 +124,21 @@ function joinQueue(){
         'action': 'join_queue',
         'token': localStorage.getItem('token'), // TODO check token live crate const
         'arg': {
-            'room_id' : room.getId()
+            'room_id' : room.id
         }
     }
 
     socket.send(JSON.stringify(joinQueueData));
+}
+
+function leaveQueue(){
+    const leaveQueueData = {
+        'action': 'leave_queue',
+        'token': localStorage.getItem('token'), // TODO check token live crate const
+        'arg': {
+            'room_id' : room.id
+        }
+    }
+
+    socket.send(JSON.stringify(leaveQueueData));
 }

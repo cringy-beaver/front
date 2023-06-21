@@ -36,7 +36,11 @@ export class Room {
             return User.fromJson(q);
         });
 
-        const submitUser = User.fromJson(json.submitting_user);
+
+        let submitUser;
+        if (json.submitting_user !== null) {
+            submitUser = User.fromJson(json.submitting_user);
+        }
 
         const usersNotQueue = (json.users_not_in_queue.length > 0) ? json.users_not_in_queue.map(function(q) {
             return User.fromJson(q);
@@ -45,5 +49,13 @@ export class Room {
         const id = json.id;
 
         return new Room(owner, queue, usersNotQueue, submitUser, id);
+    }
+
+    updateRoom(room) {
+        this.owner = room.owner;
+        this.queue = room.queue;
+        this.usersNotQueue = room.usersNotQueue;
+        this.submitUser = room.submitUser;
+        this.id = room.id;
     }
 }

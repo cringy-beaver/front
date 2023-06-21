@@ -8,7 +8,7 @@ export function getTaskAction(jsonEvent, room){
     else {
         const data = jsonEvent['data'];
 
-        if (data.status === 'REDIRECT') {
+        if (jsonEvent['status'] === 'REDIRECT') {
             alert('REDIRECT');
 
             let task = Task.fromJson(data.task);

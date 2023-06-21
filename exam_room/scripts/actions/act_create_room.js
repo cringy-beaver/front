@@ -7,7 +7,7 @@ function createRoomAction(jsonEvent, room){
         alert(jsonEvent['message'])
     } else {
         const data = jsonEvent['data'];
-        room = Room.fromJson(data);
+        room.updateRoom(Room.fromJson(data));
 
         UpdateRoom(room);
     }
