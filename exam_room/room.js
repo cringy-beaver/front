@@ -1,4 +1,4 @@
-import {User} from "./user";
+import {User} from "./user.js";
 
 export class Room {
     constructor(obj) {
@@ -7,9 +7,9 @@ export class Room {
             return new User(q);
         });
         this.submitUser = new User(obj.submitting_user);
-        this.usersNotQueue = obj.users_not_in_queue.map(function(q) {
+        this.usersNotQueue = (obj.users_not_in_queue.length > 0) ? obj.users_not_in_queue.map(function(q) {
             return new User(q);
-        });
+        }) : [];
         this.id = obj.id;
     }
 

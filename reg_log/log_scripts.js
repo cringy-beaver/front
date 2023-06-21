@@ -1,4 +1,4 @@
-const SERVER = 'http://exam4u.ru:5001'
+const SERVER = 'http://exam4u.site:5001'
 
 const loginForm = document.querySelector("#loginForm");
 const loginBtn = document.querySelector("#login-btn");
@@ -13,10 +13,11 @@ loginBtn.addEventListener('click', async function(event) {
         if (response.status === 200){
             const responseJSON = await response.json()
             localStorage.setItem('token', responseJSON.access_token);
-            localStorage.setItem('ttl', responseJSON.time_left);
+            localStorage.setItem('ttl', responseJSON.ttl);
+            localStorage.setItem('time_create', responseJSON.time_create);
             localStorage.setItem('user', JSON.stringify(responseJSON.user))
-            window.location.href = (responseJSON.user.role === 'student') ? '../exam_room/student.html'
-                : '../exam_room/create_exam_room.html';
+            window.location.href = (responseJSON.user.role === 'student') ? '../exam_room/invitation.html'
+                : '../create_exam_room/create_exam_room.html';
         } else if (response.status === 401 || response.status === 402) {
             const inputs = document.querySelectorAll('#loginForm input')
             for (let input of inputs){
