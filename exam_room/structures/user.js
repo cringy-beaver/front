@@ -34,4 +34,22 @@ export class User {
 
         return new User(name, secondName, id, task, taskTime);
     }
+
+    drawTask() {
+        const task = window.roomEnities['task'];
+        const ticket = window.roomEnities['ticket'];
+        const newImg = document.createElement('img');
+        newImg.src = task.url;
+        newImg.alt = task.name;
+        newImg.id = 'ticket-image-id'
+        newImg.setAttribute('class', 'ticket-image')
+        const newText = document.createElement('p');
+        newText.textContent = task.description;
+        newText.id = 'ticket-text-id';
+        newText.setAttribute('class', 'main-ticket-name')
+        ticket.appendChild(newImg);
+        ticket.appendChild(newText);
+    }
+
+
 }

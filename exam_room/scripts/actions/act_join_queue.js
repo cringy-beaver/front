@@ -7,13 +7,14 @@ export function joinQueueAction(jsonEvent, room){
         alert(message);
     }
     else {
-        const user = User.fromJson(data.user);
-        UpdateRoom(room, user);
+        window.roomEnities['user'] = User.fromJson(data.user);
+        // const user = window.roomEnities['user'];
+        room.joinQueue();
     }
 }
 
-function UpdateRoom(room, user) {
-    alert(`User ${user.getName()} ${user.getSecondName()} join queue`);
-    room.joinQueue(user);
-}
+// function UpdateRoom(room, user) {
+//     alert(`User ${user.getName()} ${user.getSecondName()} join queue`);
+//     room.joinQueue(user);
+// }
 

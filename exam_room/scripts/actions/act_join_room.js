@@ -3,10 +3,11 @@ import {Room} from "../../structures/room.js";
 import {User} from "../../structures/user.js";
 
 
-export function joinRoomAction(jsonEvent, room){
+export function joinRoomAction(jsonEvent){
+    const room = window.roomEnities['room'];
     if (jsonEvent['status'] === 'FAILURE') {
         // Сказать пользователю, что произошла ошибка и вернуть обратно его
-        alert(jsonEvent['message']);
+        alert(jsonEvent['message']); //TODO: зачем? пусть сразу выкидывает, там для этого есть специальное модальное окно. Просто оно пока не работает
         window.location.href = `invitation.html?message=${jsonEvent['message']}`
     }
     else {
@@ -17,12 +18,14 @@ export function joinRoomAction(jsonEvent, room){
         }
 
         if (data.room !== undefined) {
-            room.updateRoom(Room.fromJson(data.room));
-            const user = User.fromJson(data.user);
-            UpdateNewRoom(room, user);
+            room.updateRoom(Room.fromJson(data.room)); // TODO: так давайте сразу статик методов из словаря создавать комнату и просто меня ее в window
+            // const user = User.fromJson(data.user);
+            room.loadQueue();
         } else {
-            const user = User.fromJson(data.user);
-            UpdateRoom(room, user);
+            window.roomEnities['user'] = User.fromJson(data.user);
+            // const user = window.roomEnities['user'];
+            // UpdateRoom(room, user);
+            room.updateUsersNotQueue(user);
         }
     }
 }

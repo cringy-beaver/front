@@ -1,4 +1,5 @@
 import {Room} from '../structures/room.js';
+import {Task} from '../structures/task.js';
 // import {showModalWindow} from "./modal_window.js";
 import {User} from "../structures/user.js";
 import {checkToken, updateToken} from '../../token_update.js'
@@ -8,16 +9,17 @@ import {getTaskAction} from './actions/act_get_task.js'
 import {joinQueueAction} from './actions/act_join_queue.js'
 import {leaveQueueAction} from './actions/act_leave_queue.js'
 import {leaveRoomAction} from './actions/act_leave_room.js'
-import {newSubmittingAction} from "./actions/act_new_submitting";
-import {removeSubmittingAction} from "./actions/act_remove_submitting";
-import {closeRoomAction} from "./actions/act_close_room";
+import {newSubmittingAction} from './actions/act_new_submitting.js';
+import {removeSubmittingAction} from './actions/act_remove_submitting.js';
+import {closeRoomAction} from './actions/act_close_room.js';
 
 checkToken();
 await updateToken();
 
 const urlParams = new URLSearchParams(window.location.search);
 let room = new Room(null, null, null, null, null)
-let user = {};
+let user = new User(null, null, null, null);
+let task = new Task(null, null, null);
 const roomId = urlParams.get('id');
 const socket = new WebSocket('ws://exam4u.site:5002/');
 socket.addEventListener('open', socketJoinRoom)
@@ -28,6 +30,8 @@ joinBtn.addEventListener('click', joinQueue);
 const retractBtn = document.querySelector('#retract');
 retractBtn.addEventListener('click', leaveQueue);
 const queue = document.querySelector('#queue');
+const ticket = document.querySelector('#ticket');
+window.roomEnities = {'queue': queue, 'ticket': ticket, 'room': room, 'user': user, 'task': task}
 
 function socketJoinRoom(){
     const joinData = {
@@ -44,9 +48,6 @@ socket.addEventListener('message', function (event) {
     let jsonEvent = JSON.parse(event.data)
     console.log(jsonEvent)
     switch (jsonEvent['action']) {
-        // case 'join_room':
-        //     joinRoomParser(jsonEvent);
-        //     break;
         case 'get_task':
             getTaskAction(jsonEvent, room);
             break;

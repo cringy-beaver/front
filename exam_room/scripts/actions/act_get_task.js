@@ -1,4 +1,5 @@
 import {Task} from "../../structures/task.js";
+import {User} from "../../structures/user.js";
 
 
 export function getTaskAction(jsonEvent, room){
@@ -11,21 +12,22 @@ export function getTaskAction(jsonEvent, room){
         if (jsonEvent['status'] === 'REDIRECT') {
             alert('REDIRECT');
 
-            let task = Task.fromJson(data.task);
-            UpdateTask(task);
+            window.roomEnities['task'] = Task.fromJson(data.task);
+            window.roomEnities['user'].drawTask();
+            // UpdateTask(task);
             return
         }
 
-        // Если событие получил вдаледец комнаты
+        // Если событие получил вдаледец комнаты TODO [1] блять а почему у нас условие написано не через if-else на js а через "Если" на русском
         if (data.user !== undefined) {
-            const user = User.fromJson(data.user);
-            UpdateRoom(room, user);
+            window.roomEnities['user'] = User.fromJson(data.user);
+            // UpdateRoom(room, user); TODO нахуя нам обновлять комнату админа если юхер получил билет
         }
 
-        // Если событие получил юзер
+        // Если событие получил юзер TODO [1]
         if (data.task !== undefined) {
-            let task = Task.fromJson(data.task);
-            UpdateTask(task);
+            window.roomEnities['task'] = Task.fromJson(data.task);
+            window.roomEnities['user'].drawTask();
         }
     }
 }
