@@ -1,7 +1,7 @@
 import {User} from "../../structures/user.js";
 
 
-export function joinQueueAction(jsonEvent, room){
+export function newSubmittingAction(jsonEvent, room){
     const {status, message, data } = jsonEvent
     if (status === 'FAILURE') {
         alert(message);
@@ -13,7 +13,7 @@ export function joinQueueAction(jsonEvent, room){
 }
 
 function UpdateRoom(room, user) {
-    alert(`User ${user.getName()} ${user.getSecondName()} join queue`);
-    room.joinQueue(user);
+    alert(`User ${user.getName()} ${user.getSecondName()} new submitting`);
+    room.setNewSubmitUser(user);
 }
 

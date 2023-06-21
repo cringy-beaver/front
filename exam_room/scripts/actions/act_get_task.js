@@ -32,8 +32,11 @@ export function getTaskAction(jsonEvent, room){
 
 function UpdateRoom(room, user) {
     alert(`User ${user.getName()} ${user.getSecondName()} get task`);
+    room.updateUser(user);
 }
 
 function UpdateTask(task) {
     alert('Task created');
+
+    // TODO: Добавить обновление задания
 }

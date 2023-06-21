@@ -13,12 +13,12 @@ export function leaveQueueAction(jsonEvent, room){
             UpdateRoom(room, user);
         } else {
             alert('SUCCESS');
-            // Добавить себя в очередь
         }
     }
 }
 
 function UpdateRoom(room, user) {
     alert(`User ${user.getName()} ${user.getSecondName()} leave queue`);
+    room.leaveQueue(user);
 }
 

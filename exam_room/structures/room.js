@@ -51,6 +51,72 @@ export class Room {
         return new Room(owner, queue, usersNotQueue, submitUser, id);
     }
 
+    updateUser(user) {
+        for (let i = 0; i < this.queue.length; i++) {
+            if (this.queue[i].id === user.id) {
+                this.queue[i] = user;
+                return;
+            }
+        }
+
+        for (let i = 0; i < this.usersNotQueue.length; i++) {
+            if (this.usersNotQueue[i].id === user.id) {
+                this.usersNotQueue[i] = user;
+                return;
+            }
+        }
+    }
+
+    joinQueue(user) {
+        this.queue.push(user);
+
+        for (let i = 0; i < this.usersNotQueue.length; i++) {
+            if (this.usersNotQueue[i].id === user.id) {
+                this.usersNotQueue.splice(i, 1);
+                return;
+            }
+        }
+    }
+
+    leaveQueue(user) {
+        for (let i = 0; i < this.queue.length; i++) {
+            if (this.queue[i].id === user.id) {
+                this.queue.splice(i, 1);
+                return;
+            }
+        }
+
+        this.usersNotQueue.push(user);
+    }
+
+    setNewSubmitUser(user) {
+        this.submitUser = user;
+    }
+
+    removeSubmitUser() {
+        this.submitUser = null;
+    }
+
+    joinRoom(user) {
+        this.usersNotQueue.push(user);
+    }
+
+    leaveRoom(user) {
+        for (let i = 0; i < this.usersNotQueue.length; i++) {
+            if (this.usersNotQueue[i].id === user.id) {
+                this.usersNotQueue.splice(i, 1);
+                return;
+            }
+        }
+
+        for (let i = 0; i < this.queue.length; i++) {
+            if (this.queue[i].id === user.id) {
+                this.queue.splice(i, 1);
+                return;
+            }
+        }
+    }
+
     updateRoom(room) {
         this.owner = room.owner;
         this.queue = room.queue;

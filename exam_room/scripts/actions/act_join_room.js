@@ -28,9 +28,10 @@ export function joinRoomAction(jsonEvent, room){
 }
 
 function UpdateRoom(room, user) {
-    // Вызывается при подключении нового юзера к комнате
+    // Вызывается при подключении нового юзера к комнате (у остальных)
     alert(`User ${user.getName()} ${user.getSecondName()} joined room ${room.getId()}`);
     updateQueue();
+    room.joinRoom(user);
 }
 
 function UpdateNewRoom(room, user) {

@@ -7,6 +7,10 @@ import {joinRoomAction} from './actions/act_join_room.js'
 import {getTaskAction} from './actions/act_get_task.js'
 import {joinQueueAction} from './actions/act_join_queue.js'
 import {leaveQueueAction} from './actions/act_leave_queue.js'
+import {leaveRoomAction} from './actions/act_leave_room.js'
+import {newSubmittingAction} from "./actions/act_new_submitting";
+import {removeSubmittingAction} from "./actions/act_remove_submitting";
+import {closeRoomAction} from "./actions/act_close_room";
 
 checkToken();
 await updateToken();
@@ -54,6 +58,18 @@ socket.addEventListener('message', function (event) {
             break;
         case 'leave_queue':
             leaveQueueAction(jsonEvent, room);
+            break;
+        case 'leave_room':
+            leaveRoomAction(jsonEvent, room);
+            break;
+        case 'new_submitting':
+            newSubmittingAction(jsonEvent, room);
+            break;
+        case 'remove_submitting':
+            removeSubmittingAction(jsonEvent, room);
+            break;
+        case 'close_room':
+            closeRoomAction(jsonEvent, room);
             break;
         default:
             alert('Socket parser error!')
@@ -106,18 +122,18 @@ function getTask(){
 //     }
 // }
 
-function joinQueueParser(jsonEvent){
-    if (jsonEvent['message'] === 'SUCCESS') {
-        const newQueueUser = document.createElement('p');
-        if (jsonEvent['data'].has('user')) {
-            let tmpUser = new User(JSON.parse(jsonEvent['data']['user']))
-            newQueueUser.textContent = `${tmpUser.getName()} ${tmpUser.getSecondName()}`
-        } else {
-            newQueueUser.textContent = `${user.getName()} ${user.getSecondName()}`
-        }
-        queue.appendChild(newQueueUser)
-    }
-}
+// function joinQueueParser(jsonEvent){
+//     if (jsonEvent['message'] === 'SUCCESS') {
+//         const newQueueUser = document.createElement('p');
+//         if (jsonEvent['data'].has('user')) {
+//             let tmpUser = new User(JSON.parse(jsonEvent['data']['user']))
+//             newQueueUser.textContent = `${tmpUser.getName()} ${tmpUser.getSecondName()}`
+//         } else {
+//             newQueueUser.textContent = `${user.getName()} ${user.getSecondName()}`
+//         }
+//         queue.appendChild(newQueueUser)
+//     }
+// }
 
 function joinQueue(){
     const joinQueueData = {
