@@ -24,7 +24,7 @@ export function getTaskAction(jsonEvent, room){
         if (data.task !== undefined) {
             const task = window.roomEnities['task'] = Task.fromJson(data.task);
             const user = window.roomEnities['user'];
-            user.drawTask();
+            user.drawTask(task);
         }
     }
 }

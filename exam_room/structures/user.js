@@ -35,8 +35,7 @@ export class User {
         return new User(name, secondName, id, task, taskTime);
     }
 
-    drawTask() {
-        const task = window.roomEnities['task'];
+    drawTask(task) {
         if (task === null){
             return;
         }

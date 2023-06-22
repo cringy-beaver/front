@@ -23,9 +23,9 @@ export function joinRoomAction(jsonEvent){
             const task = window.roomEnities['task'] = user.task;
             room.loadQueue();
             room.loadHeap();
-            user.drawTask();
+            user.drawTask(null);
         } else {
-            const user = window.roomEnities['user'] = User.fromJson(data.user);
+            const user = User.fromJson(data.user);
             room.updateUsersNotQueue(user);
         }
     }

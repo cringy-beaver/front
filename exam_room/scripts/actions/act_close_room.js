@@ -7,7 +7,8 @@ export function closeRoomAction(jsonEvent, room){
         alert(message);
     }
     else {
-        UpdateRoom(room);
+        alert('вас кикнули нахуй')
+        window.location.href = '../main_page/main_page.html'
     }
 }
 

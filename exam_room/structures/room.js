@@ -88,7 +88,9 @@ export class Room {
     }
 
     removeSubmitUser() {
+        const user = this.submitUser;
         this.submitUser = null;
+        this.leaveQueue(user);
     }
 
     joinRoom() {
@@ -171,6 +173,33 @@ export class Room {
         newParagraph.textContent = `${user.getName()} ${user.getSecondName()}`
         newParagraph.id = user.id;
         heap.appendChild(newParagraph);
+    }
+
+    getSubmittingUser(user) {
+        const student = window.roomEnities['student'];
+        let newParagraph = document.createElement('p');
+        newParagraph.textContent = `${user.getName()} ${user.getSecondName()}`
+        newParagraph.id = user.id;
+        student.appendChild(newParagraph);
+        const owner = User.fromJson(window.roomEnities['user']);
+        owner.drawTask(user.task);
+    }
+
+    updateSubmittingUserQueue(user) {
+        const queue = window.roomEnities['queue'];
+        const elements = Array.from(queue.querySelectorAll('p'));
+        elements.forEach(function(element) {
+            if (element.id === user.id) {
+                element.style.color = "green";
+            }
+        });
+    }
+
+    removeStudentTeacher() {
+        const ticket = window.roomEnities['ticket'];
+        const student = window.roomEnities['student'];
+        ticket.innerHTML = "";
+        student.innerHTML = "";
     }
 
 }

@@ -8,12 +8,18 @@ export function newSubmittingAction(jsonEvent, room){
     }
     else {
         const user = User.fromJson(data.user);
-        UpdateRoom(room, user);
+        room.setNewSubmitUser(user);
+        const target = jsonEvent.target;
+        if (target === 'owner') {
+            room.getSubmittingUser(user);
+        }
+        room.updateSubmittingUserQueue(user);
+        // UpdateRoom(room, user);
     }
 }
 
-function UpdateRoom(room, user) {
-    alert(`User ${user.getName()} ${user.getSecondName()} new submitting`);
-    room.setNewSubmitUser(user);
-}
+// function UpdateRoom(room, user) {
+//     alert(`User ${user.getName()} ${user.getSecondName()} new submitting`);
+//     room.setNewSubmitUser(user);
+// }
 

@@ -7,12 +7,16 @@ export function removeSubmittingAction(jsonEvent, room){
         alert(message);
     }
     else {
-        UpdateRoom(room);
+        room.removeSubmitUser();
+        const target = jsonEvent.target;
+        if (target === 'owner') {
+            room.removeStudentTeacher();
+        }
     }
 }
 
-function UpdateRoom(room) {
-    alert(`Remove submitting`);
-    room.removeSubmitting();
-}
+// function UpdateRoom(room) {
+//     alert(`Remove submitting`);
+//     room.removeSubmitting();
+// }
 
