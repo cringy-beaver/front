@@ -4,7 +4,7 @@ import {checkToken, updateToken} from '../../token_update.js'
 checkToken();
 await updateToken();
 let roomStorage = JSON.parse(localStorage.getItem('room'));
-export let room = {};
+export let room = new Room(null, null, null, null, null);
 
 
 const roomIdField = document.querySelector('#room-id');
@@ -44,7 +44,8 @@ function createRoomParser(jsonEvent){
         alert(jsonEvent['message'])
     } else {
         const data = jsonEvent['data'];
-        room = new Room(data)
+        // room = new Room(data)
+        room.updateRoom(Room.fromJson(data));
         const roomId = document.createElement('p');
         roomId.textContent = room.getId();
         roomIdField.appendChild(roomId);
