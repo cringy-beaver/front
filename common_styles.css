@@ -160,5 +160,27 @@ button:hover {
     .header button {
         margin-right: 0.5em;
         height: 2.7em;
+    }    
+
+
+    .wrapper {
+        flex-direction: column;
+    }
+
+    .left {
+        width: 80%;
+    }
+
+    .right {
+        width: 80%;
+    }
+
+    .ticket {
+        font-size: 1.2em;
+        height: fit-content;
+    }
+
+    .right button {
+        margin-bottom: 1em;
     }
 }
