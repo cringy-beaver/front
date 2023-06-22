@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Ваш билет</title>
     <link rel="stylesheet" href="../common_styles.css">
+    <link rel="stylesheet" href="room.css">
     </script> 
 </head>
 <body>
@@ -22,11 +23,15 @@
     <div class="queue scroll" id="queue">
         <!--            <p> 1. Иван Иванов </p>-->
     </div>
+    <div class="queue scroll" id="heap">
+        <!--            <p> 1. Иван Иванов </p>-->
+    </div>
     
     <div class="right">
         <div class="teacher-buttons">
             <button id="next" onclick="">Следующий</button>
             <button id="finish" onclick="">Завершить сдачу</button>
+            <button id="leave-room" class="button" onclick="window.location.href='/front/reg_log/login.html'">Выйти из комнаты</button>
         </div>
     </div>
     <script type="module" src="scripts/teacher_room.js"></script>

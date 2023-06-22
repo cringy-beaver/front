@@ -37,6 +37,9 @@ export class User {
 
     drawTask() {
         const task = window.roomEnities['task'];
+        if (task === null){
+            return;
+        }
         const ticket = window.roomEnities['ticket'];
         const newImg = document.createElement('img');
         newImg.src = task.url;

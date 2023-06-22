@@ -19,29 +19,30 @@ export function joinRoomAction(jsonEvent){
 
         if (data.room !== undefined) {
             room.updateRoom(Room.fromJson(data.room)); // TODO: так давайте сразу статик методов из словаря создавать комнату и просто меня ее в window
-            // const user = User.fromJson(data.user);
+            const user = window.roomEnities['user'] = User.fromJson(data.user);
+            const task = window.roomEnities['task'] = user.task;
             room.loadQueue();
+            room.loadHeap();
+            user.drawTask();
         } else {
-            window.roomEnities['user'] = User.fromJson(data.user);
-            // const user = window.roomEnities['user'];
-            // UpdateRoom(room, user);
+            const user = window.roomEnities['user'] = User.fromJson(data.user);
             room.updateUsersNotQueue(user);
         }
     }
 }
 
-function UpdateRoom(room, user) {
-    // Вызывается при подключении нового юзера к комнате (у остальных)
-    alert(`User ${user.getName()} ${user.getSecondName()} joined room ${room.getId()}`);
-    updateQueue();
-    room.joinRoom(user);
-}
-
-function UpdateNewRoom(room, user) {
-    // Вызывается при первом подключении к комнате юзера
-    alert('Joined room');
-    updateQueue();
-}
+// function UpdateRoom(room, user) {
+//     // Вызывается при подключении нового юзера к комнате (у остальных)
+//     alert(`User ${user.getName()} ${user.getSecondName()} joined room ${room.getId()}`);
+//     updateQueue();
+//     room.joinRoom(user);
+// }
+//
+// function UpdateNewRoom(room, user) {
+//     // Вызывается при первом подключении к комнате юзера
+//     alert('Joined room');
+//     updateQueue();
+// }
 
 function updateQueue(){
     // for (let user in room.getQueue()) {

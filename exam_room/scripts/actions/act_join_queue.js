@@ -7,9 +7,8 @@ export function joinQueueAction(jsonEvent, room){
         alert(message);
     }
     else {
-        window.roomEnities['user'] = User.fromJson(data.user);
-        // const user = window.roomEnities['user'];
-        room.joinQueue();
+        const user = User.fromJson(data.user);
+        room.joinQueue(user);
     }
 }
 

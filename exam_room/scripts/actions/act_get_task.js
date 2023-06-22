@@ -11,34 +11,31 @@ export function getTaskAction(jsonEvent, room){
 
         if (jsonEvent['status'] === 'REDIRECT') {
             alert('REDIRECT');
-
-            window.roomEnities['task'] = Task.fromJson(data.task);
-            window.roomEnities['user'].drawTask();
-            // UpdateTask(task);
             return
         }
 
         // Если событие получил вдаледец комнаты TODO [1] блять а почему у нас условие написано не через if-else на js а через "Если" на русском
         if (data.user !== undefined) {
-            window.roomEnities['user'] = User.fromJson(data.user);
+            const user = User.fromJson(data.user);
             // UpdateRoom(room, user); TODO нахуя нам обновлять комнату админа если юхер получил билет
         }
 
         // Если событие получил юзер TODO [1]
         if (data.task !== undefined) {
-            window.roomEnities['task'] = Task.fromJson(data.task);
-            window.roomEnities['user'].drawTask();
+            const task = window.roomEnities['task'] = Task.fromJson(data.task);
+            const user = window.roomEnities['user'];
+            user.drawTask();
         }
     }
 }
 
-function UpdateRoom(room, user) {
-    alert(`User ${user.getName()} ${user.getSecondName()} get task`);
-    room.updateUser(user);
-}
-
-function UpdateTask(task) {
-    alert('Task created');
-
-    // TODO: Добавить обновление задания
-}
+// function UpdateRoom(room, user) {
+//     alert(`User ${user.getName()} ${user.getSecondName()} get task`);
+//     room.updateUser(user);
+// }
+//
+// function UpdateTask(task) {
+//     alert('Task created');
+//
+//     // TODO: Добавить обновление задания
+// }

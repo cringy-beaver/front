@@ -31,7 +31,8 @@ const retractBtn = document.querySelector('#retract');
 retractBtn.addEventListener('click', leaveQueue);
 const queue = document.querySelector('#queue');
 const ticket = document.querySelector('#ticket');
-window.roomEnities = {'queue': queue, 'ticket': ticket, 'room': room, 'user': user, 'task': task}
+const heap = document.querySelector('#heap');
+window.roomEnities = {'queue': queue, 'ticket': ticket, 'room': room, 'user': user, 'task': task, 'heap': heap}
 
 function socketJoinRoom(){
     const joinData = {
@@ -76,29 +77,6 @@ socket.addEventListener('message', function (event) {
             alert('Socket parser error!')
     }});
 
-// function joinRoomParser(jsonEvent){
-//     if (jsonEvent['status'] === 'FAILURE') {
-//         window.location.href = `invitation.html?message=${jsonEvent['message']}`
-//     } else {
-//         room = new Room(jsonEvent.data.room)
-//         if (jsonEvent['status'] === 'REDIRECT') {
-//             showModalWindow('', 300)
-//         }
-//         if (jsonEvent['message'] !== 'User joined'){
-//             user = new User(jsonEvent.data.user)
-//         }
-//         updateQueue();
-//     }
-// }
-//
-// function updateQueue(){
-//     for (let user in room.getQueue()) {
-//         let newParagraph = document.createElement('p');
-//         newParagraph.textContent = `${user.getName()} ${user.getSecondName()}`
-//         queue.appendChild(newParagraph);
-//     }
-// }
-
 function getTask(){
     const getTaskData = {
         'action': 'get_task',
@@ -109,32 +87,6 @@ function getTask(){
     }
     socket.send(JSON.stringify(getTaskData));
 }
-
-// function getTaskParser(jsonEvent) {
-//     if (jsonEvent['status'] === 'SUCCESS') {
-//         const image = document.querySelector('#ticket-image');
-//         const text = document.querySelector('#ticket-text');
-//         const data = JSON.parse(jsonEvent.data)
-//         image.src = data.url
-//         image.alt = data.name
-//         text.value = data.name
-//     } else {
-//         alert(jsonEvent['message'])
-//     }
-// }
-
-// function joinQueueParser(jsonEvent){
-//     if (jsonEvent['message'] === 'SUCCESS') {
-//         const newQueueUser = document.createElement('p');
-//         if (jsonEvent['data'].has('user')) {
-//             let tmpUser = new User(JSON.parse(jsonEvent['data']['user']))
-//             newQueueUser.textContent = `${tmpUser.getName()} ${tmpUser.getSecondName()}`
-//         } else {
-//             newQueueUser.textContent = `${user.getName()} ${user.getSecondName()}`
-//         }
-//         queue.appendChild(newQueueUser)
-//     }
-// }
 
 function joinQueue(){
     const joinQueueData = {

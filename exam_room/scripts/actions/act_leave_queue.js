@@ -10,15 +10,15 @@ export function leaveQueueAction(jsonEvent, room){
         // Если событие получил не запрашивающий юзер
         if (data.user) {
             const user = User.fromJson(data.user);
-            UpdateRoom(room, user);
+            room.leaveQueue(user);
         } else {
             alert('SUCCESS');
         }
     }
 }
 
-function UpdateRoom(room, user) {
-    alert(`User ${user.getName()} ${user.getSecondName()} leave queue`);
-    room.leaveQueue(user);
-}
+// function UpdateRoom(room, user) {
+//     alert(`User ${user.getName()} ${user.getSecondName()} leave queue`);
+//     room.leaveQueue(user);
+// }
 

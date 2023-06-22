@@ -56,28 +56,31 @@ export class Room {
         }
     }
 
-    joinQueue() {
-        const user = window.roomEnities['user'];
+    joinQueue(user) {
         this.queue.push(user);
         this.updateQueue(user)
         for (let i = 0; i < this.usersNotQueue.length; i++) {
             if (this.usersNotQueue[i].id === user.id) {
                 this.usersNotQueue.splice(i, 1);
-                return;
+            }
+        }
+        this.deleteHeapUser(user);
+        for (let i = 0; i < this.usersNotQueue.length; i++) {
+            if (this.usersNotQueue[i].id === user.id) {
+                this.usersNotQueue[i] = user;
             }
         }
     }
 
-    leaveQueue() {
-        const user = window.roomEnities['user'];
+    leaveQueue(user) {
         this.deleteQueueUser(user);
         for (let i = 0; i < this.queue.length; i++) {
             if (this.queue[i].id === user.id) {
                 this.queue.splice(i, 1);
-                return;
             }
         }
         this.usersNotQueue.push(user);
+        this.addUserNotQueue(user);
     }
 
     setNewSubmitUser(user) {
@@ -93,6 +96,7 @@ export class Room {
     }
 
     leaveRoom() {
+        const user = window.roomEnities['user'];
         for (let i = 0; i < this.usersNotQueue.length; i++) {
             if (this.usersNotQueue[i].id === user.id) {
                 this.usersNotQueue.splice(i, 1);
@@ -130,9 +134,15 @@ export class Room {
         }
     }
 
-    updateUsersNotQueue(){
-        const user = window.roomEnities['user'];
+    loadHeap(){
+        for (let user of this.usersNotQueue){
+            this.addUserNotQueue(user);
+        }
+    }
+
+    updateUsersNotQueue(user){
         this.usersNotQueue.push(user);
+        this.addUserNotQueue(user);
     }
 
     deleteQueueUser(user) {
@@ -144,4 +154,23 @@ export class Room {
             }
         });
     }
+
+    deleteHeapUser(user) {
+        const heap = window.roomEnities['heap'];
+        const elements = Array.from(heap.querySelectorAll('p'));
+        elements.forEach(function(element) {
+            if (element.id === user.id) {
+                element.remove();
+            }
+        });
+    }
+
+    addUserNotQueue(user) {
+        const heap = window.roomEnities['heap'];
+        let newParagraph = document.createElement('p');
+        newParagraph.textContent = `${user.getName()} ${user.getSecondName()}`
+        newParagraph.id = user.id;
+        heap.appendChild(newParagraph);
+    }
+
 }

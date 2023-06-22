@@ -6,7 +6,6 @@ await updateToken();
 let roomStorage = JSON.parse(localStorage.getItem('room'));
 export let room = new Room(null, null, null, null, null);
 
-
 const roomIdField = document.querySelector('#room-id');
 const socket = new WebSocket('ws://exam4u.site:5002/');
 socket.addEventListener('open', socketCreateRoom);

@@ -8,12 +8,12 @@ export function leaveRoomAction(jsonEvent, room){
     }
     else {
         const user = User.fromJson(data.user);
-        UpdateRoom(room, user);
+        room.leaveRoom(user);
     }
 }
 
-function UpdateRoom(room, user) {
-    alert(`User ${user.getName()} ${user.getSecondName()} leave room`);
-    room.leaveRoom(user);
-}
+// function UpdateRoom(room, user) {
+//     alert(`User ${user.getName()} ${user.getSecondName()} leave room`);
+//     room.leaveRoom(user);
+// }
 
