@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function() {
-    fetch('/front/header.html')
+    fetch('/header.html')
         .then(response => response.text())
         .then(data => {
             const headerDiv = document.getElementById('header');
