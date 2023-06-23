@@ -11,7 +11,7 @@ export function leaveRoomAction(jsonEvent, room){
         const thisUser = window.roomEnities['user'];
         if (thisUser.id === user.id){
             alert('вас кикнули нахуй!')
-            window.location.href = '../main_page/main_page.html'
+            window.location.href = '../main_page/hub.html'
         }
         room.leaveRoom(user);
     }

@@ -17,8 +17,7 @@ loginBtn.addEventListener('click', async function(event) {
             localStorage.setItem('ttl', responseJSON.ttl);
             localStorage.setItem('time_create', responseJSON.time_create);
             localStorage.setItem('user', JSON.stringify(responseJSON.user))
-            window.location.href = (responseJSON.user.role === 'student') ? '../exam_room/invitation.html'
-                : '../create_exam_room/create_exam_room.html';
+            window.location.href = '../main_page/hub.html';
         } else if (response.status === 401 || response.status === 402) {
             const inputs = document.querySelectorAll('#loginForm input')
             for (let input of inputs){
