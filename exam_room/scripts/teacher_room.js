@@ -8,6 +8,7 @@ import {getTaskAction} from "./actions/act_get_task.js";
 import {joinQueueAction} from "./actions/act_join_queue.js";
 import {joinRoomAction} from "./actions/act_join_room.js";
 import {leaveQueueAction} from "./actions/act_leave_queue.js";
+import {createRoomAction} from "./actions/act_create_room.js";
 import {User} from "../structures/user.js";
 import {Task} from "../structures/task.js";
 
@@ -27,11 +28,11 @@ nextBtn.addEventListener('click', nextStudent)
 const finishBtn = document.querySelector('#finish');
 finishBtn.addEventListener('click', finishStudent)
 const studentName = document.querySelector('#student-name');
-window.roomEnities = {'queue': queue, 'ticket': ticket, 'room': room,
-    'user': user, 'task': task, 'heap': heap, 'student': studentName}
-
-
 const roomIdField = document.querySelector('#room-id');
+window.roomEnities = {'queue': queue, 'ticket': ticket, 'room': room,
+    'user': user, 'task': task, 'heap': heap,
+    'student': studentName, 'roomId': roomIdField}
+
 const socket = new WebSocket('ws://exam4u.site:5002/');
 socket.addEventListener('open', socketCreateRoom);
 
@@ -60,7 +61,7 @@ socket.addEventListener('message', function (event) {
     console.log(jsonEvent)
     switch (jsonEvent['action']){
         case 'create_room':
-            createRoomParser(jsonEvent)
+            createRoomAction(jsonEvent, room)
             break
         case 'get_task':
             getTaskAction(jsonEvent, room);

@@ -120,6 +120,17 @@ export class Room {
         this.usersNotQueue = room.usersNotQueue;
         this.submitUser = room.submitUser;
         this.id = room.id;
+        room.loadQueue();
+        room.loadHeap();
+        const user = window.roomEnities['user'];
+        if (room.owner.id !== user.id){
+            user.drawTask(user.task)
+        }
+        user.drawTask(null);
+        this.updateSubmittingUserQueue(this.submitUser);
+        if (user.id === room.owner.id){
+            room.getSubmittingUser(this.submitUser);
+        }
     }
 
     updateQueue(user) {
@@ -176,6 +187,9 @@ export class Room {
     }
 
     getSubmittingUser(user) {
+        if (user === null || user === undefined) {
+            return
+        }
         const student = window.roomEnities['student'];
         let newParagraph = document.createElement('p');
         newParagraph.textContent = `${user.getName()} ${user.getSecondName()}`
@@ -186,6 +200,9 @@ export class Room {
     }
 
     updateSubmittingUserQueue(user) {
+        if (user === null){
+            return
+        }
         const queue = window.roomEnities['queue'];
         const elements = Array.from(queue.querySelectorAll('p'));
         elements.forEach(function(element) {

@@ -18,12 +18,9 @@ export function joinRoomAction(jsonEvent){
         }
 
         if (data.room !== undefined) {
-            room.updateRoom(Room.fromJson(data.room)); // TODO: так давайте сразу статик методов из словаря создавать комнату и просто меня ее в window
             const user = window.roomEnities['user'] = User.fromJson(data.user);
             const task = window.roomEnities['task'] = user.task;
-            room.loadQueue();
-            room.loadHeap();
-            user.drawTask(null);
+            room.updateRoom(Room.fromJson(data.room)); // TODO: так давайте сразу статик методов из словаря создавать комнату и просто меня ее в window
         } else {
             const user = User.fromJson(data.user);
             room.updateUsersNotQueue(user);
