@@ -8,6 +8,11 @@ export function leaveRoomAction(jsonEvent, room){
     }
     else {
         const user = User.fromJson(data.user);
+        const thisUser = window.roomEnities['user'];
+        if (thisUser.id === user.id){
+            alert('вас кикнули нахуй!')
+            window.location.href = '../main_page/main_page.html'
+        }
         room.leaveRoom(user);
     }
 }

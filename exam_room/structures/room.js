@@ -1,4 +1,5 @@
 import {User} from "./user.js";
+import {deleteUser} from "../utils/deleteUser.js";
 
 export class Room {
     constructor(owner, queue, usersNotQueue, submitUser, id) {
@@ -97,21 +98,20 @@ export class Room {
         this.usersNotQueue.push(user);
     }
 
-    leaveRoom() {
-        const user = window.roomEnities['user'];
+    leaveRoom(user) {
         for (let i = 0; i < this.usersNotQueue.length; i++) {
             if (this.usersNotQueue[i].id === user.id) {
                 this.usersNotQueue.splice(i, 1);
-                return;
             }
         }
 
         for (let i = 0; i < this.queue.length; i++) {
             if (this.queue[i].id === user.id) {
                 this.queue.splice(i, 1);
-                return;
             }
         }
+        this.deleteHeapUser(user);
+        this.deleteQueueUser(user);
     }
 
     updateRoom(room) {
@@ -135,10 +135,7 @@ export class Room {
 
     updateQueue(user) {
         const queue = window.roomEnities['queue'];
-        let newParagraph = document.createElement('p');
-        newParagraph.textContent = `${user.getName()} ${user.getSecondName()}`
-        newParagraph.id = user.id;
-        queue.appendChild(newParagraph);
+        queue.appendChild(this.getUserNameDiv(user));
     }
 
     loadQueue(){
@@ -160,7 +157,7 @@ export class Room {
 
     deleteQueueUser(user) {
         const queue = window.roomEnities['queue'];
-        const elements = Array.from(queue.querySelectorAll('p'));
+        const elements = Array.from(queue.querySelectorAll('div'));
         elements.forEach(function(element) {
             if (element.id === user.id) {
                 element.remove();
@@ -170,7 +167,7 @@ export class Room {
 
     deleteHeapUser(user) {
         const heap = window.roomEnities['heap'];
-        const elements = Array.from(heap.querySelectorAll('p'));
+        const elements = Array.from(heap.querySelectorAll('div'));
         elements.forEach(function(element) {
             if (element.id === user.id) {
                 element.remove();
@@ -180,10 +177,7 @@ export class Room {
 
     addUserNotQueue(user) {
         const heap = window.roomEnities['heap'];
-        let newParagraph = document.createElement('p');
-        newParagraph.textContent = `${user.getName()} ${user.getSecondName()}`
-        newParagraph.id = user.id;
-        heap.appendChild(newParagraph);
+        heap.appendChild(this.getUserNameDiv(user));
     }
 
     getSubmittingUser(user) {
@@ -191,23 +185,23 @@ export class Room {
             return
         }
         const student = window.roomEnities['student'];
-        let newParagraph = document.createElement('p');
-        newParagraph.textContent = `${user.getName()} ${user.getSecondName()}`
-        newParagraph.id = user.id;
-        student.appendChild(newParagraph);
+        student.appendChild(this.getUserNameDiv(user, false));
         const owner = User.fromJson(window.roomEnities['user']);
         owner.drawTask(user.task);
     }
 
     updateSubmittingUserQueue(user) {
-        if (user === null){
+        if (user === null || user === undefined){
             return
         }
         const queue = window.roomEnities['queue'];
-        const elements = Array.from(queue.querySelectorAll('p'));
+        const elements = Array.from(queue.querySelectorAll('div'));
         elements.forEach(function(element) {
             if (element.id === user.id) {
-                element.style.color = "green";
+                const text = element.querySelector('p');
+                const button = element.querySelector('button');
+                text.style.color = "green";
+                element.removeChild(button);
             }
         });
     }
@@ -219,4 +213,31 @@ export class Room {
         student.innerHTML = "";
     }
 
+    createDeleteButton(id){
+        const deleteButton = document.createElement('button');
+        deleteButton.textContent = 'x';
+        const roomId = this.id;
+        deleteButton.id = `delete_${id}`;
+        const socket = window.roomEnities['socket'];
+        deleteButton.addEventListener('click', function() {deleteUser(socket, id, roomId);})
+        return deleteButton;
+    }
+
+    isOwner() {
+        return this.owner.id === window.roomEnities['user'].id;
+    }
+
+    getUserNameDiv(user, isCreateButton = true){
+        const div = document.createElement('div');
+        div.id = user.id;
+        div.classList.add('flex');
+        const newParagraph = document.createElement('p');
+        newParagraph.textContent = user.getFullName();
+        newParagraph.id = `p_${user.id}`;
+        div.appendChild(newParagraph);
+        if (this.isOwner() && isCreateButton) {
+            div.appendChild(this.createDeleteButton(user.id))
+        }
+        return div;
+    }
 }

@@ -17,6 +17,10 @@ export class User {
         return this.secondName;
     }
 
+    getFullName() {
+        return `${this.name} ${this.secondName}`
+    }
+
     static fromJson(json) {
         const name = json.name;
         const secondName = json.second_name;

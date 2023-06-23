@@ -1,5 +1,5 @@
 export class Task {
-    constructor(name, url, description) {
+    constructor(description, url, name) {
         this.name = name;
         this.url = url;
         this.description = description;

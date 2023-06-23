@@ -29,11 +29,11 @@ const finishBtn = document.querySelector('#finish');
 finishBtn.addEventListener('click', finishStudent)
 const studentName = document.querySelector('#student-name');
 const roomIdField = document.querySelector('#room-id');
+const socket = new WebSocket('ws://exam4u.site:5002/');
 window.roomEnities = {'queue': queue, 'ticket': ticket, 'room': room,
-    'user': user, 'task': task, 'heap': heap,
+    'user': user, 'task': task, 'heap': heap, 'socket': socket,
     'student': studentName, 'roomId': roomIdField}
 
-const socket = new WebSocket('ws://exam4u.site:5002/');
 socket.addEventListener('open', socketCreateRoom);
 
 function socketCreateRoom() {
@@ -91,20 +91,6 @@ socket.addEventListener('message', function (event) {
             alert('Socket parser error!')
     }
 });
-
-function createRoomParser(jsonEvent){
-    if (jsonEvent['status'] === 'FAILURE') {
-        alert(jsonEvent['message'])
-    } else {
-        const data = jsonEvent['data'];
-        // room = new Room(data)
-        room.updateRoom(Room.fromJson(data));
-        user = window.roomEnities['user'] = room.owner;
-        const roomId = document.createElement('p');
-        roomId.textContent = room.getId();
-        roomIdField.appendChild(roomId);
-    }
-}
 
 function leaveRoom(){
     const leaveRoomData = {
