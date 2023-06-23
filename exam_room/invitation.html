@@ -17,13 +17,15 @@
     </div>
     <div class="page-block card">
         <div class="card-header">
-            <h3>Вступить в группу {название комнаты}</h3>
+            <h3>Вступить в группу</h3>
         </div>
         <div class="card-body">
-            <p>Имя преподавателя: {имя преподавателя}</p>
+            <label>
+                <input class="inp-round" type="text" name="id" placeholder="Введите id, он есть у преподавателя" required id="id-field">
+            </label>
+
         </div>
         <div class="card-footer">
-            <input class="inp-round" type="text" name="id" placeholder="Введите id" required id="id-field">
             <div class="buttons">
                 <button onclick="window.location.href='../main_page/main_page.html'">Отменить</button>
                 <button id="join-btn">Вступить в группу</button>

@@ -68,10 +68,15 @@ function createPicture(name, source) {
     const img = document.createElement('img');
     img.setAttribute('src', source);
     newDiv.append(img);
-    const innerDiv = document.createElement('q-description');
+
+    const innerDiv = document.createElement('div');
+    innerDiv.setAttribute('class', 'q-description');
+
     const heading = document.createElement('h5');
+    heading.setAttribute('class', 'ticket-name');
     heading.textContent = name;
     innerDiv.append(heading);
+
     newDiv.append(innerDiv);
     return newDiv;
 }
