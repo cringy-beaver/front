@@ -1,16 +1,17 @@
 import {Task} from "../../structures/task.js";
 import {User} from "../../structures/user.js";
+import {createModal} from "../../../modal.js";
 
 
 export function getTaskAction(jsonEvent, room){
     if (jsonEvent['status'] === 'FAILURE') {
-        alert(jsonEvent['message']);
+        createModal(jsonEvent['message']);
     }
     else {
         const data = jsonEvent['data'];
 
         if (jsonEvent['status'] === 'REDIRECT') {
-            alert('REDIRECT');
+            createModal('REDIRECT');
             return
         }
 

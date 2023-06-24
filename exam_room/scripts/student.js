@@ -1,6 +1,5 @@
 import {Room} from '../structures/room.js';
 import {Task} from '../structures/task.js';
-// import {showModalWindow} from "./modal_window.js";
 import {User} from "../structures/user.js";
 import {checkToken, updateToken} from '../../token_update.js'
 

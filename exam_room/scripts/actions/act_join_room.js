@@ -1,20 +1,21 @@
 import {Room} from "../../structures/room.js";
 // import {room} from "../teacher_room";
 import {User} from "../../structures/user.js";
+import {createModal} from "../../../modal.js";
 
 
 export function joinRoomAction(jsonEvent){
     const room = window.roomEnities['room'];
     if (jsonEvent['status'] === 'FAILURE') {
         // Сказать пользователю, что произошла ошибка и вернуть обратно его
-        alert(jsonEvent['message']); //TODO: зачем? пусть сразу выкидывает, там для этого есть специальное модальное окно. Просто оно пока не работает
+        createModal(jsonEvent['message']); //TODO: зачем? пусть сразу выкидывает, там для этого есть специальное модальное окно. Просто оно пока не работает
         window.location.href = `invitation.html?message=${jsonEvent['message']}`
     }
     else {
         const data = jsonEvent['data'];
 
         if (jsonEvent['status'] === 'REDIRECT') {
-            alert('REDIRECT');
+            createModal('REDIRECT');
         }
 
         if (data.room !== undefined) {
@@ -26,25 +27,4 @@ export function joinRoomAction(jsonEvent){
             room.updateUsersNotQueue(user);
         }
     }
-}
-
-// function UpdateRoom(room, user) {
-//     // Вызывается при подключении нового юзера к комнате (у остальных)
-//     alert(`User ${user.getName()} ${user.getSecondName()} joined room ${room.getId()}`);
-//     updateQueue();
-//     room.joinRoom(user);
-// }
-//
-// function UpdateNewRoom(room, user) {
-//     // Вызывается при первом подключении к комнате юзера
-//     alert('Joined room');
-//     updateQueue();
-// }
-
-function updateQueue(){
-    // for (let user in room.getQueue()) {
-    //     let newParagraph = document.createElement('p');
-    //     newParagraph.textContent = `${user.getName()} ${user.getSecondName()}`
-    //     queue.appendChild(newParagraph);
-    // }
 }

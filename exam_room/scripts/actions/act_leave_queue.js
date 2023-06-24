@@ -1,10 +1,11 @@
 import {User} from "../../structures/user.js";
+import {createModal} from "../../../modal.js";
 
 
 export function leaveQueueAction(jsonEvent, room){
     const {status, message, data } = jsonEvent
     if (status === 'FAILURE') {
-        alert(message);
+        createModal(message);
     }
     else {
         // Если событие получил не запрашивающий юзер
@@ -12,7 +13,7 @@ export function leaveQueueAction(jsonEvent, room){
             const user = User.fromJson(data.user);
             room.leaveQueue(user);
         } else {
-            alert('SUCCESS');
+            createModal('SUCCESS');
         }
     }
 }

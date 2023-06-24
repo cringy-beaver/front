@@ -1,10 +1,11 @@
 import {Room} from "../../structures/room.js";
+import {createModal} from "../../../modal.js";
 
 
 export function createRoomAction(jsonEvent, room){
     if (jsonEvent['status'] === 'FAILURE') {
         // Сказать пользователю, что произошла ошибка и вернуть обратно его
-        alert(jsonEvent['message'])
+        createModal(jsonEvent['message'])
     } else {
         const data = jsonEvent['data'];
         const room_tmp = Room.fromJson(data);

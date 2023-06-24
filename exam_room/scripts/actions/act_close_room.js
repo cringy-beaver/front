@@ -1,18 +1,15 @@
 import {User} from "../../structures/user.js";
+import {createModal} from "../../../modal.js";
 
 
 export function closeRoomAction(jsonEvent, room){
     const {status, message, data } = jsonEvent
     if (status === 'FAILURE') {
-        alert(message);
+        createModal(message);
     }
     else {
-        alert('вас кикнули нахуй')
+        createModal('Комната была удалена');
         window.location.href = '../main_page/hub.html'
     }
-}
-
-function UpdateRoom(room, user) {
-    alert(`Room closed`);
 }
 
