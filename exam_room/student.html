@@ -1,46 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Ваш билет</title>
-    <link rel="stylesheet" href="../common_styles.css">
-    <link rel="stylesheet" href="invitation.css">
-    <link rel="stylesheet" href="room.css">
-    <link rel="stylesheet" href="student-room.css">
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <title>Ваш билет</title>
+        <link rel="stylesheet" href="../common_styles.css">
+        <link rel="stylesheet" href="invitation.css">
+        <link rel="stylesheet" href="room.css">
+        <link rel="stylesheet" href="student-room.css">
+    </head>
 <body>
 <div id="header"></div>
 <div class="wrapper">
-    <div id="error-window" hidden>
-        <div id="error-window-content">
-            <p id="error-window-message"></p>
-            <button id="error-window-close">Close</button> <!-- Doesn't work rn !-->
+
+    <div class="student-console">
+        <div class="main-ticket hidden" id="ticket"></div>
+
+        <div class="student-buttons">
+            <button id="get-ticket" class="button" onclick="">Взять билет</button>
         </div>
     </div>
-    <div class="left">
-        <div class="main-ticket hidden" id="ticket">
-<!--            <button id="myButton" onclick="myFunction()">Нажми меня</button>-->
-<!--            <img src="../source/images/q1.png" alt="На пересдачу" id="ticket-image"> &lt;!&ndash; Make hidden firstly !&ndash;&gt;-->
-<!--            <p class="main-ticket-name" id="ticket-text">lorem ipsum</p>-->
-            </div>
-        </div>
-    </div>
-    
-    <div class="right">
+
+
+
+    <div class="queues">
         <div class="queue scroll" id="queue">
+            <div class="queue-name">Очередь</div>
 <!--            <p> 1. Иван Иванов </p>-->
         </div>
 
         <div class="queue scroll" id="heap">
+            <div class="queue-name">Вне очереди</div>
             <!--            <p> 1. Иван Иванов </p>-->
         </div>
-        
+
         <div class="buttons">
             <button id="join" class="button" onclick="">Записаться</button>
             <button id="retract" class="button" onclick="">Отменить</button>
-            <button id="get-ticket" class="button" onclick="">Взять билет</button>
         </div>
     </div>
+
+    
+
     <script type="module" src="./scripts/student.js"></script>
     <script src="../load_header.js"></script>
 </div>
