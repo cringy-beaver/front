@@ -22,9 +22,7 @@ body {
     font-size: 3em;
     font-weight: bold;
     color: black;
-    margin-left: 2em;
-    margin-top: auto;
-    margin-bottom: auto;
+    margin: auto 2em;
 }
 
 .header .buttons {
@@ -92,27 +90,8 @@ body {
     text-align: center;
 }
 
-.button {
-    margin: auto;
-    background-color: #19A7CE;
-    border: none;
-    border-radius: 7px;
-    display: inline-block;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    font-size: 16px;
-    margin-right: 20px;
-}
-
 .teacher-buttons {
     margin-top: 140px;
-}
-
-.button:hover {
-    background-color: #146C94;
-    cursor: pointer;
 }
 
 
@@ -190,7 +169,6 @@ body {
 
 
 .inp-round {
-    margin: 10px;
     padding:10px;
     border: 0;
     box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
@@ -199,6 +177,10 @@ body {
 
 .inp-round:focus {
     outline-color: gray;
+}
+
+.margin10 {
+    margin: 10px;
 }
 
 .input-error {
@@ -237,4 +219,34 @@ body {
 .exit-button:hover:before {
     width: 100%;
     left:0;
+}
+
+.button {
+    background-color: transparent;
+    text-align: center;
+    display: inline-block;
+    padding: 15px 20px;
+    border: 2px solid darkslategrey;
+    border-radius: 5px;
+    cursor: pointer;
+    letter-spacing: 2px;
+    position:relative;
+    overflow:hidden;
+    margin: 0 20px;
+}
+
+.button:before {
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 0;
+    background: #59be6e;
+    left: 0;
+    bottom: 0;
+    transition: all .3s;
+    opacity: 0.3;
+}
+
+.button:hover:before {
+    width: 100%;
 }
