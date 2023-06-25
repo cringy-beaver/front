@@ -9,7 +9,6 @@ body {
 }
 
 .header {
-    background-color: #146C94;
     height: 5em;
     display: flex;
     justify-content: space-between;
@@ -22,14 +21,10 @@ body {
 .header h1 {
     font-size: 3em;
     font-weight: bold;
-    color: #fff;
+    color: black;
     margin-left: 2em;
     margin-top: auto;
     margin-bottom: auto;
-}
-
-.header button {
-    font-size: 1.2em;
 }
 
 .header .buttons {
@@ -185,6 +180,7 @@ body {
 
 .user-name-logout {
     display: flex;
+    align-items: center;
     flex-direction: row;
 }
 
@@ -208,4 +204,37 @@ body {
 .input-error {
     border: 2px solid red;
     border-radius: 5px;
+}
+
+
+.exit-button {
+    background-color: transparent;
+    border: 0;
+    height: fit-content;
+    text-align: center;
+    color: red;
+    display: inline-block;
+    padding: 5px 5px;
+    cursor: pointer;
+    letter-spacing: 2px;
+    position:relative;
+    overflow:hidden;
+    margin: 0 20px;
+}
+
+.exit-button:before {
+    content: "";
+    position: absolute;
+    width: 0;
+    background : red;
+    left: 45%;
+    height: 2px;
+    bottom: 0;
+    transition: all .3s;
+    opacity: 0.7;
+}
+
+.exit-button:hover:before {
+    width: 100%;
+    left:0;
 }
