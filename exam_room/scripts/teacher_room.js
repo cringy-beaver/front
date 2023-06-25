@@ -125,3 +125,9 @@ function finishStudent(){
     }
     socket.send(JSON.stringify(finishStudentData));
 }
+
+roomIdField.addEventListener("click", async () => {
+    try {
+        await navigator.clipboard.writeText(room.id);
+    } catch (err) {}
+});

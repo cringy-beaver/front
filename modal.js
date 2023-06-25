@@ -19,8 +19,8 @@ export function createModal(message){
     const modalText = document.createElement("p");
     modalText.textContent = message;
 
-    modalContent.appendChild(closeButton);
     modalContent.appendChild(modalText);
+    modalContent.appendChild(closeButton);
     modal.appendChild(modalContent);
     document.body.appendChild(modal);
     modal.style.display = "flex";

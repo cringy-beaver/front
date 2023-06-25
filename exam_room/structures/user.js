@@ -55,6 +55,8 @@ export class User {
         newText.setAttribute('class', 'main-ticket-name')
         ticket.appendChild(newImg);
         ticket.appendChild(newText);
+        newImg.width = newImg.parentElement.offsetWidth;
+        newImg.height = newImg.parentElement.offsetHeight * 0.6;
     }
 
 

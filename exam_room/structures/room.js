@@ -185,7 +185,7 @@ export class Room {
             return
         }
         const student = window.roomEnities['student'];
-        student.appendChild(this.getUserNameDiv(user, false));
+        student.appendChild(this.getUserNameDiv(user, false, true));
         const owner = User.fromJson(window.roomEnities['user']);
         owner.drawTask(user.task);
     }
@@ -201,7 +201,8 @@ export class Room {
                 const text = element.querySelector('p');
                 const button = element.querySelector('button');
                 text.style.color = "green";
-                element.removeChild(button);
+                if (button !== null)
+                    element.removeChild(button);
             }
         });
     }
@@ -227,13 +228,17 @@ export class Room {
         return this.owner.id === window.roomEnities['user'].id;
     }
 
-    getUserNameDiv(user, isCreateButton = true){
+    getUserNameDiv(user, isCreateButton = true, isSubmitting = false){
         const div = document.createElement('div');
         div.id = user.id;
         div.classList.add('flex');
+        if (!isSubmitting){
+            div.classList.add('name-field');
+        }
         const newParagraph = document.createElement('p');
         newParagraph.textContent = user.getFullName();
         newParagraph.id = `p_${user.id}`;
+        newParagraph.classList.add('name-field-paragraph')
         div.appendChild(newParagraph);
         if (this.isOwner() && isCreateButton) {
             div.appendChild(this.createDeleteButton(user.id))

@@ -2,3 +2,16 @@
     height: 200px;
     overflow: auto;
 }
+
+.name-field {
+    border-radius: 5px;
+    border: 1px solid gray;
+    display: inline-block;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.name-field-paragraph {
+    display: inline-block;
+}

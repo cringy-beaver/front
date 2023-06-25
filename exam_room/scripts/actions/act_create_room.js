@@ -11,8 +11,6 @@ export function createRoomAction(jsonEvent, room){
         const room_tmp = Room.fromJson(data);
         const user = window.roomEnities['user'] = room_tmp.owner;
         room.updateRoom(room_tmp);
-        // UpdateRoom(room);
-        updateRoomId(room);
     }
 }
 
@@ -23,10 +21,3 @@ export function createRoomAction(jsonEvent, room){
 //     roomId.textContent = room.getId();
 //     roomIdField.appendChild(roomId);
 // }
-
-function updateRoomId(room){
-    const roomIdField = window.roomEnities['roomId'];
-    const roomId = document.createElement('p');
-    roomId.textContent = room.getId();
-    roomIdField.appendChild(roomId);
-}
