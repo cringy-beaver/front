@@ -8,15 +8,14 @@
 
 .create-room {
     height: 70%;
+    width: 70%;
     display: flex;
     flex-direction: column;
     margin-top: 5em;
 }
 
 .room-questions {
-    max-width: 900px;
-    min-width: 600px;
-    width: fit-content;
+    flex-grow: 1;
     display: flex;
     flex-direction: column;
 }
@@ -28,7 +27,11 @@
 }
 
 .settings-header {
-    padding: 0 10px;
+    padding: 0 20px;
+}
+
+.settings {
+    padding: 0 20px;
 }
 
 .questions-header {

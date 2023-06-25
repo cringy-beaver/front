@@ -1,8 +1,9 @@
 const questions = document.querySelector('.questions');
-const uploadButton = document.querySelector('#upload-button');
 const createButton = document.querySelector('#create-button');
+const loadFiles = document.querySelector("#input-file");
 let tickets = [];
-uploadButton.addEventListener('click', async () => {
+
+loadFiles.addEventListener('change', async () => {
     const fileInput = document.querySelector('#input-file');
     const file = fileInput.files[0];
 
