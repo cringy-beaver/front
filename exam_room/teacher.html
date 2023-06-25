@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Ваш билет</title>
+    <title>Комната сдачи</title>
     <link rel="stylesheet" href="../common_styles.css">
     <link rel="stylesheet" href="room.css">
     <link rel="stylesheet" href="teacher-room.css">
@@ -10,25 +10,36 @@
 <body>
 <div id="header"></div>
 <div class="wrapper">
-    <div class="left">
-        <span id="room-id" class="student-name">Скопировать ID</span>
-        <p class="student-name" id="student-name"></p>
-        <div class="ticket" id="ticket"></div>
+
+
+    <div class="teacher-console">
+        <div class="ticket" id="ticket">Здесь будет билет сдающего</div>
+
+        <p class="student-name" id="student-name">Здесь будет имя сдающего</p>
+
+            <div class="teacher-buttons">
+                <button id="next" onclick="">Следующий</button>
+                <button id="finish" onclick="">Завершить сдачу</button>
+                <button id="leave-room" class="button">Выйти из комнаты</button>
+            </div>
+
     </div>
-    <div class="queue scroll" id="queue">
+
+    <div class="queues">
+        <div class="queue scroll" id="queue">
+            <div class="queue-name">Очередь</div>
         <!--            <p> 1. Иван Иванов </p>-->
-    </div>
-    <div class="queue scroll" id="heap">
-        <!--            <p> 1. Иван Иванов </p>-->
-    </div>
-    
-    <div class="right">
-        <div class="teacher-buttons">
-            <button id="next" onclick="">Следующий</button>
-            <button id="finish" onclick="">Завершить сдачу</button>
-            <button id="leave-room" class="button">Выйти из комнаты</button>
         </div>
+        <div class="queue scroll" id="heap">
+            <div class="queue-name">Вне очереди</div>
+            <!--            <p> 1. Иван Иванов </p>-->
+        </div>
+
+        <span id="room-id">Скопировать ID комнаты</span>
     </div>
+
+    
+
     <script type="module" src="scripts/teacher_room.js"></script>
     <script src="../load_header.js"></script>
 </div>

@@ -185,9 +185,10 @@ export class Room {
             return
         }
         const student = window.roomEnities['student'];
+        student.textContent = ''
         student.appendChild(this.getUserNameDiv(user, false, true));
         const owner = User.fromJson(window.roomEnities['user']);
-        owner.drawTask(user.task);
+        owner.drawTask(user.task, true);
     }
 
     updateSubmittingUserQueue(user) {
@@ -198,9 +199,12 @@ export class Room {
         const elements = Array.from(queue.querySelectorAll('div'));
         elements.forEach(function(element) {
             if (element.id === user.id) {
-                const text = element.querySelector('p');
+                //const text = element.querySelector('p');
                 const button = element.querySelector('button');
-                text.style.color = "green";
+                //text.style.color = "green";
+                // element.style.transition = '0.2s';
+                // element.style.backgroundColor = 'cornflowerblue';
+                element.classList.add('submit-div');
                 if (button !== null)
                     element.removeChild(button);
             }
@@ -212,6 +216,8 @@ export class Room {
         const student = window.roomEnities['student'];
         ticket.innerHTML = "";
         student.innerHTML = "";
+        student.textContent = 'Здесь будет имя сдающего'
+        ticket.textContent = 'Здесь будет билет сдающего'
     }
 
     createDeleteButton(id){

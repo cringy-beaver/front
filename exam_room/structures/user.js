@@ -39,11 +39,14 @@ export class User {
         return new User(name, secondName, id, task, taskTime);
     }
 
-    drawTask(task) {
+    drawTask(task, isOwner = false) {
         if (task === null){
             return;
         }
         const ticket = window.roomEnities['ticket'];
+        if (isOwner) {
+            ticket.textContent = '';
+        }
         const newImg = document.createElement('img');
         newImg.src = task.url;
         newImg.alt = task.name;

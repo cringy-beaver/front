@@ -9,6 +9,8 @@ document.addEventListener("DOMContentLoaded", function() {
             const user = JSON.parse(localStorage.getItem('user'));
             if (user !== undefined) {
                 const newH2 = document.createElement('h2');
+
+                newH2.classList.add('initials')
                 newH2.textContent = `${user['name']} ${user['second_name']}`
                 info.insertBefore(newH2, info.firstChild);
             }

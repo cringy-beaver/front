@@ -9,6 +9,8 @@ body {
 }
 
 .header {
+    padding-left: 2%;
+    padding-right: 2%;
     background-color: #146C94;
     height: 5em;
     display: flex;
@@ -17,15 +19,14 @@ body {
     left: 0;
     width: 100%;
     margin-bottom: 20px;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .header h1 {
     font-size: 3em;
     font-weight: bold;
     color: #fff;
-    margin-left: 2em;
-    margin-top: auto;
-    margin-bottom: auto;
 }
 
 .header button {
@@ -33,9 +34,9 @@ body {
 }
 
 .header .buttons {
-    margin-left: auto;
-    margin-top: auto;
-    margin-bottom: auto;
+    margin-right: 3%;
+    /* margin-top: auto; */
+    /* margin-bottom: auto;*/
 }
 
 .error {
@@ -45,53 +46,65 @@ body {
 .wrapper {
     margin-top: 5em;
     display: flex;
-    height: 100%;
+    justify-content: space-between;
+    height: 87%;
+    padding-top: 1%;
+    padding-left: 2%;
+    padding-right: 2%;
 }
 
 .left {
-    width: 60%;
+    /*width: 60%;*/
 }
 
 .right {
-    width: 30%;
+    /*width: 30%;*/
 }
 
 .ticket {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+
     background-color: #AFD3E2;
-    width: 80%;
-    height: 60%;
+    width: 97%;
+    height: 70%;
     border-radius: 7px;
-    margin-left: 10%;
-    margin-right: 10%;
-    margin-top: 50px;
     font-family: Arial, Helvetica, sans-serif;
-    padding: 30px;
+    /*padding: 3.5%;*/
     font-size: 25px;
 }
 
 .queue {
+    text-align: center;
     background-color: #AFD3E2;
-    width: 100%;
     height: 45%;
     border-radius: 7px;
-    margin-top: 50px;
-    margin-bottom: 50px;
     font-family: Arial, Helvetica, sans-serif;
     padding: 30px;
     font-size: 25px;
     overflow-y: scroll;
 }
 
+
+
 .student-name {
     background-color: #AFD3E2;
     border-radius: 7px;
-    margin: 50px 10% -20px;
+    /*margin: 50px 10% -20px;*/
     width: 50%;
     height: 20px;
     font-family: Arial, Helvetica, sans-serif;
-    padding: 20px;
+    padding: 4%;
     font-size: 25px;
     white-space: nowrap;
+
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    align-items: center;
+    justify-content: flex-start;
 }
 
 .buttons {
@@ -99,7 +112,8 @@ body {
 }
 
 button {
-    margin: auto;
+    margin-top: auto;
+    margin-bottom: auto;
     background-color: #19A7CE;
     border: none;
     border-radius: 7px;
@@ -109,16 +123,21 @@ button {
     text-align: center;
     text-decoration: none;
     font-size: 16px;
-    margin-right: 20px;
+
+    transition: 0.2s;
 }
 
 .teacher-buttons {
-    margin-top: 140px;
+    /*margin-top: 140px;*/
+    display: flex;
+    justify-content: space-around;
 }
 
 button:hover {
-    background-color: #146C94;
     cursor: pointer;
+
+    background-color: #146C94!important;
+    transition: 0.2s;
 }
 
 
@@ -130,6 +149,8 @@ button:hover {
 }
 
 .page-block {
+    text-align: center;
+
     background-color: white;
     padding: 10px;
     border-radius: 20px;
@@ -165,25 +186,40 @@ button:hover {
     margin: auto;
     padding: 20px;
     border: 1px solid #888;
-    display: inline-flex;
-    gap: 10px;
+    /* width: 50%; */
     max-height: 50%;
     overflow-y: auto;
     position: relative;
-    border-radius: 5px;
+    border-radius: 10px;
 }
 
 .close {
-    color: #aaa;
+    line-height: 19px;
+    /* margin-top: 16px; */
+    /* margin-bottom: 16px; */
+    /* margin-right: 2px; */
+    /* border: 1px; */
+    background-color: #19A7CE;
+    border-radius: 3px;
+    /* border-top-width: 10px; */
+    /* padding-top: 0px; */
+    padding: 3px;
+
+    color: #fff;
     float: right;
-    font-size: 28px;
+    /* font-size: 28px; */
     font-weight: bold;
     cursor: pointer;
-    transition: 0.3s;
-    margin-left: auto;
-    margin-right: 10px;
+    transition: 0.2s;
 }
 
 .close:hover {
-    color: black;
+        /* color: black; */
+    background-color: #146C94!important;
+    transition: 0.2s;
+}
+
+.initials {
+    color: white;
+    margin-right: 20px;
 }
