@@ -5,7 +5,7 @@ import {createModal} from "../../../modal.js";
 export function createRoomAction(jsonEvent, room){
     if (jsonEvent['status'] === 'FAILURE') {
         // Сказать пользователю, что произошла ошибка и вернуть обратно его
-        createModal(jsonEvent['message'], true, 'front/main_page/hub.html')
+        createModal(jsonEvent['message'], true, '/main_page/hub.html')
     } else {
         const data = jsonEvent['data'];
         const test = room;

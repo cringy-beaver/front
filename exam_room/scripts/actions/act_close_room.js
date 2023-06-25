@@ -1,4 +1,4 @@
-import {User} from "../../structures/user.js";
+
 import {createModal} from "../../../modal.js";
 
 
