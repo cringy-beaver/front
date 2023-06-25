@@ -1,4 +1,4 @@
-export function createModal(message){
+export function createModal(message, isTerminal = false, location = ''){
     const modal = document.createElement("div");
     modal.setAttribute("id", "modal");
     modal.setAttribute("class", "modal");
@@ -14,6 +14,9 @@ export function createModal(message){
     closeButton.classList.add('close');
     closeButton.addEventListener("click", function() {
         modal.style.display = "none";
+        if (isTerminal) {
+            window.location.href = '../main_page/hub.html'
+        }
     });
 
     const modalText = document.createElement("p");
@@ -27,6 +30,9 @@ export function createModal(message){
     window.addEventListener("click", function(event) {
         if (event.target === modal) {
             modal.style.display = "none";
+            if (isTerminal) {
+                window.location.href = '../main_page/hub.html'
+            }
         }
     });
 }

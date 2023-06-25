@@ -8,8 +8,8 @@ export function closeRoomAction(jsonEvent, room){
         createModal(message);
     }
     else {
-        createModal('Комната была удалена');
-        window.location.href = '../main_page/hub.html'
+        createModal('Комната была удалена', true, '../main_page/hub.html');
+        // window.location.href = '../main_page/hub.html'
     }
 }
 

@@ -98,7 +98,7 @@ function leaveRoom(){
         'token': localStorage.getItem('token'), // TODO check token live crate const
         'arg': {
             'room_id' : room.id,
-            'user_id' : user.id
+            'user_id' : window.roomEnities['user'].id
         }
     }
     socket.send(JSON.stringify(leaveRoomData));
