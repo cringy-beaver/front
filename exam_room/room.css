@@ -10,10 +10,15 @@
     padding-right: 5%;
     justify-content: space-between;
 
+    margin-top: 4%;
+    margin-bottom: 4%;
+
     border-radius: 5px;
     /*border: 1px solid gray;*/
     width: 100%;
-    margin: 0 auto;
+
+    background: hsl(0deg 0% 100% / 50%)
+
 }
 
 .name-field-paragraph {
@@ -33,5 +38,13 @@
 
 .submit-div {
     transition: 0.2s;
-    background-color: cornflowerblue;
+    color: black;
+    background-color: #19a7ce;
+}
+
+.queue-name {
+    margin-top: -3%;
+    background-color: #146c94;
+    color: white;
+    border-radius: 5px;
 }
