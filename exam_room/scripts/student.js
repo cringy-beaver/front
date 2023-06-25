@@ -86,7 +86,6 @@ function getTask(){
         }
     }
     socket.send(JSON.stringify(getTaskData));
-    getBtn.classList.add('hidden');
 }
 
 function joinQueue(){
