@@ -11,6 +11,7 @@ import {leaveRoomAction} from './actions/act_leave_room.js'
 import {newSubmittingAction} from './actions/act_new_submitting.js';
 import {removeSubmittingAction} from './actions/act_remove_submitting.js';
 import {closeRoomAction} from './actions/act_close_room.js';
+import {createModal} from "../../modal.js";
 
 checkToken();
 await updateToken();
@@ -73,7 +74,7 @@ socket.addEventListener('message', function (event) {
             closeRoomAction(jsonEvent, room);
             break;
         default:
-            alert('Socket parser error!')
+            createModal('Socket parser error!')
     }});
 
 function getTask(){
