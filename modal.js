@@ -10,7 +10,7 @@ export function createModal(message){
 
     const closeButton = document.createElement("span");
     closeButton.setAttribute("class", "close");
-    closeButton.innerHTML = "&times;";
+    closeButton.innerHTML = "ОК";
     closeButton.classList.add('close');
     closeButton.addEventListener("click", function() {
         modal.style.display = "none";
@@ -21,6 +21,7 @@ export function createModal(message){
 
     modalContent.appendChild(modalText);
     modalContent.appendChild(closeButton);
+
     modal.appendChild(modalContent);
     document.body.appendChild(modal);
     modal.style.display = "flex";

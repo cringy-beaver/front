@@ -198,9 +198,12 @@ export class Room {
         const elements = Array.from(queue.querySelectorAll('div'));
         elements.forEach(function(element) {
             if (element.id === user.id) {
-                const text = element.querySelector('p');
+                //const text = element.querySelector('p');
                 const button = element.querySelector('button');
-                text.style.color = "green";
+                //text.style.color = "green";
+                // element.style.transition = '0.2s';
+                // element.style.backgroundColor = 'cornflowerblue';
+                element.classList.add('submit-div');
                 if (button !== null)
                     element.removeChild(button);
             }

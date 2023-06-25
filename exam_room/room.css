@@ -1,17 +1,37 @@
 .scroll {
-    height: 200px;
+    height: 33%;
     overflow: auto;
 }
 
 .name-field {
+    max-width: 89%;
+    display: inline-flex;
+    padding-left: 5%;
+    padding-right: 5%;
+    justify-content: space-between;
+
     border-radius: 5px;
-    border: 1px solid gray;
-    display: inline-block;
+    /*border: 1px solid gray;*/
     width: 100%;
     margin: 0 auto;
-    padding: 0 20px;
 }
 
 .name-field-paragraph {
     display: inline-block;
+}
+
+.queues {
+    width: 33%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.ticket-image {
+    object-fit: scale-down;
+}
+
+.submit-div {
+    transition: 0.2s;
+    background-color: cornflowerblue;
 }
