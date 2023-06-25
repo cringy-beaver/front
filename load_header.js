@@ -4,13 +4,10 @@ document.addEventListener("DOMContentLoaded", function() {
         .then(data => {
             document.getElementById('header').innerHTML = data;
             const exitBtn = document.querySelector("#exit");
-            exitBtn.addEventListener('click', clearLocalStorage)
-            const info = document.querySelector('#info');
+            exitBtn.addEventListener('click', clearLocalStorage);
             const user = JSON.parse(localStorage.getItem('user'));
             if (user !== undefined) {
-                const newH2 = document.createElement('h2');
-                newH2.textContent = `${user['name']} ${user['second_name']}`
-                info.insertBefore(newH2, info.firstChild);
+                document.querySelector('#full_name').textContent = `${user['name']} ${user['second_name']}`;
             }
         });
 });
