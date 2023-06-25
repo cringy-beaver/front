@@ -44,12 +44,10 @@ export class User {
             return;
         }
         const ticket = window.roomEnities['ticket'];
-        if (isOwner) {
-            ticket.textContent = '';
-        }
+        ticket.textContent = '';
         const newImg = document.createElement('img');
         newImg.src = task.url;
-        newImg.alt = task.name;
+        newImg.alt = task.url;
         newImg.id = 'ticket-image-id'
         newImg.setAttribute('class', 'ticket-image')
         const newText = document.createElement('p');
@@ -60,6 +58,10 @@ export class User {
         ticket.appendChild(newText);
         newImg.width = newImg.parentElement.offsetWidth;
         newImg.height = newImg.parentElement.offsetHeight * 0.6;
+        const getBtn = document.querySelector('#get-ticket');
+        if (getBtn !== null) {
+            getBtn.classList.add('hidden');
+        }
     }
 
 

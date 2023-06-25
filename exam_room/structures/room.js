@@ -136,6 +136,12 @@ export class Room {
     updateQueue(user) {
         const queue = window.roomEnities['queue'];
         queue.appendChild(this.getUserNameDiv(user));
+        if (!this.isOwner()){
+            const joinBtn = document.querySelector('#join');
+            joinBtn.classList.add('hidden');
+            const retractBtn = document.querySelector('#retract');
+            retractBtn.classList.remove('hidden');
+        }
     }
 
     loadQueue(){
@@ -178,6 +184,12 @@ export class Room {
     addUserNotQueue(user) {
         const heap = window.roomEnities['heap'];
         heap.appendChild(this.getUserNameDiv(user));
+        if (!this.isOwner()){
+            const joinBtn = document.querySelector('#join');
+            joinBtn.classList.remove('hidden');
+            const retractBtn = document.querySelector('#retract');
+            retractBtn.classList.add('hidden');
+        }
     }
 
     getSubmittingUser(user) {
@@ -189,10 +201,20 @@ export class Room {
         student.appendChild(this.getUserNameDiv(user, false, true));
         const owner = User.fromJson(window.roomEnities['user']);
         owner.drawTask(user.task, true);
+        if (this.isOwner()) {
+            const nextBtn = document.querySelector('#next');
+            nextBtn.classList.add('hidden');
+            const finishBtn = document.querySelector('#finish');
+            finishBtn.classList.remove('hidden');
+        }
     }
 
     updateSubmittingUserQueue(user) {
         if (user === null || user === undefined){
+            if (this.isOwner()) {
+                const finishBtn = document.querySelector('#finish');
+                finishBtn.classList.add('hidden');
+            }
             return
         }
         const queue = window.roomEnities['queue'];
@@ -218,6 +240,12 @@ export class Room {
         student.innerHTML = "";
         student.textContent = 'Здесь будет имя сдающего'
         ticket.textContent = 'Здесь будет билет сдающего'
+        if (this.isOwner()){
+            const nextBtn = document.querySelector('#next');
+            nextBtn.classList.remove('hidden');
+            const finishBtn = document.querySelector('#finish');
+            finishBtn.classList.add('hidden');
+        }
     }
 
     createDeleteButton(id){

@@ -86,6 +86,7 @@ function getTask(){
         }
     }
     socket.send(JSON.stringify(getTaskData));
+    getBtn.classList.add('hidden');
 }
 
 function joinQueue(){
@@ -98,6 +99,8 @@ function joinQueue(){
     }
 
     socket.send(JSON.stringify(joinQueueData));
+    joinBtn.classList.add('hidden');
+    retractBtn.classList.remove('hidden');
 }
 
 function leaveQueue(){
@@ -110,4 +113,6 @@ function leaveQueue(){
     }
 
     socket.send(JSON.stringify(leaveQueueData));
+    retractBtn.classList.add('hidden');
+    joinBtn.classList.remove('hidden');
 }

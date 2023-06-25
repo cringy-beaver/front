@@ -24,9 +24,9 @@ const heap = document.querySelector('#heap');
 const leaveBtn = document.querySelector('#leave-room');
 leaveBtn.addEventListener('click', leaveRoom)
 const nextBtn = document.querySelector('#next');
-nextBtn.addEventListener('click', nextStudent)
+nextBtn.addEventListener('click', nextStudent);
 const finishBtn = document.querySelector('#finish');
-finishBtn.addEventListener('click', finishStudent)
+finishBtn.addEventListener('click', finishStudent);
 const studentName = document.querySelector('#student-name');
 const roomIdField = document.querySelector('#room-id');
 const socket = new WebSocket('ws://exam4u.site:5002/');
