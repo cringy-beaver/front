@@ -1,0 +1,58 @@
+h1 {
+    text-align: center;
+    font-size: 69px;
+    margin-bottom: 20px;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 18px;
+}
+
+div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    gap: 10px;
+}
+
+h2 {
+    font-size: 69px;
+    margin-right: 20px;
+}
+
+img {
+    height: 250px;
+    width: 400px;
+}
+
+.little {
+    height: 150px;
+    width: 300px;
+}
+
+p {
+    font-size: 42px;
+}
+
+h3 {
+    font-size: 69px;
+}
+
+.css-meme {
+    text-align: left;
+}
+
+.large {
+    height: 560px;
+    width: 860px;
+}
