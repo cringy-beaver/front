@@ -1,0 +1,26 @@
+#room-id {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+    text-align: center;
+    background-color: #AFD3E2;
+    border-radius: 7px;
+    height: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 20px;
+    font-size: 25px;
+    white-space: nowrap;
+}
+
+#room-id:hover {
+    color: gray;
+    cursor: pointer;
+}
+
+.teacher-console {
+    width: 67%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}

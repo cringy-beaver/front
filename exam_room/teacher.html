@@ -2,28 +2,46 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Ваш билет</title>
+    <title>Комната сдачи</title>
     <link rel="stylesheet" href="../common_styles.css">
-    </script> 
+    <link rel="stylesheet" href="room.css">
+    <link rel="stylesheet" href="teacher-room.css">
 </head>
 <body>
-<object seamless type="text/html" data="../header.html" width="100%" height=100px id="header"></object>
+<div id="header"></div>
 <div class="wrapper">
-    <div class="left">
-        <div class="student-name" id="room-id">
-        </div>
-        <div class="ticket">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
-        </div>
+
+
+    <div class="teacher-console">
+        <div class="ticket" id="ticket">Здесь будет билет сдающего</div>
+
+        <p class="student-name" id="student-name">Здесь будет имя сдающего</p>
+
+            <div class="teacher-buttons">
+                <button id="next" onclick="">Следующий</button>
+                <button id="finish" onclick="">Завершить сдачу</button>
+                <button id="leave-room" class="button">Выйти из комнаты</button>
+            </div>
+
     </div>
+
+    <div class="queues">
+        <div class="queue scroll" id="queue">
+            <div class="queue-name">Очередь</div>
+        <!--            <p> 1. Иван Иванов </p>-->
+        </div>
+        <div class="queue scroll" id="heap">
+            <div class="queue-name">Вне очереди</div>
+            <!--            <p> 1. Иван Иванов </p>-->
+        </div>
+
+        <span id="room-id">Скопировать ID комнаты</span>
+    </div>
+
     
-    <div class="right">
-        <div class="teacher-buttons">
-            <button id="next" onclick="">Следующий</button>
-            <button id="finish" onclick="">Завершить сдачу</button>
-        </div>
-    </div>
-    <script type="module" src="teacher_room.js"></script>
+
+    <script type="module" src="scripts/teacher_room.js"></script>
+    <script src="../load_header.js"></script>
 </div>
 </body>
 </html>

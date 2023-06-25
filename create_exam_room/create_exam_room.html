@@ -9,7 +9,8 @@
 </head>
 <body>
 <div class="page-container">
-    <object seamless type="text/html" data="../header.html" width="100%" height=100px id="header"></object>
+<!--    <object seamless type="text/html" data="../header.html" width="100%" height=100px id="header"></object>-->
+    <div id="header"></div>
     <div class="create-room page-block">
         <div class="create-room-header">
             <h2>Создать новую комнату</h2>
@@ -21,13 +22,13 @@
 
                 </div>
                 <div class="questions">
-                    <div class="question">
-                        <img src="../source/images/q1.png">
-                        <div class="q-description">
-                            <h5 class="ticket-name">Билет 1</h5>
-                            <img src="../source/images/comment_icon.svg" style="width: 20px">
-                        </div>
-                    </div>
+<!--                    <div class="question">-->
+<!--                        <img src="../source/images/q1.png">-->
+<!--                        <div class="q-description">-->
+<!--                            <h5 class="ticket-name">Билет 1</h5>-->
+<!--                            <img src="../source/images/comment_icon.svg" style="width: 20px">-->
+<!--                        </div>-->
+<!--                    </div>-->
                 </div>
                 <div class="add-questions">
                     <label class="input-file">
@@ -55,7 +56,7 @@
                     <form id="create-form">
                         <label>
                             Максимальное количество студентов
-                            <input type="number" name="student-count" id="student-count">
+                            <input type="number" min="1" max="50" name="student-count" id="student-count">
                         </label><br>
                         <label>
                             Название комнаты
@@ -70,24 +71,7 @@
         </div>
     </div>
     <script type="module" src="room_scripts.js"></script>
-
-<!--    <div class="overlay"></div>-->
-
-<!--    <div id="myModal" class="modal">-->
-<!--        <div class="modal-content">-->
-<!--            <span class="close">&times;</span>-->
-
-<!--            <h2 id="question-name"></h2>-->
-<!--            <img id="question-img" src="">-->
-<!--            <textarea id="tutor-comment"></textarea>-->
-<!--            <div>-->
-<!--                <button>Удалить билет</button>-->
-<!--                <button>Сохранить изменения</button>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
-
-<!--    <script type="module" src="edit_questions_modal.js"></script>-->
+    <script src="../load_header.js"></script>
 </div>
 </body>
 </html>

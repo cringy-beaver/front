@@ -3,20 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <title>Кондуктор</title>
-    <link rel="stylesheet" href="../common_styles.css">
+    <link rel="stylesheet" href="/common_styles.css">
     <link rel="stylesheet" href="main_page_styles.css">
 </head>
 <body>
+<div id="header"></div>
 <div class="page-container">
     <div class="card page-block">
         <div class="card-header">
             <h1>Кондуктор</h1>
         </div>
         <div class="buttons">
-            <button id="login" onclick="window.location.href='../reg_log/login.html'">Войти</button>
-            <button id="register" onclick="window.location.href='../reg_log/register.html'">Зарегистрироваться</button>
+            <button id="create" onclick="window.location.href='../create_exam_room/create_exam_room.html'">Создать комнату</button>
+            <button id="join" onclick="window.location.href='../exam_room/invitation.html'">Войти в комнату</button>
         </div>
     </div>
+    <script src="../load_header.js"></script>
 </div>
 </body>
 </html>

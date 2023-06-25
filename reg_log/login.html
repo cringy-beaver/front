@@ -5,18 +5,21 @@
     <title>Логин</title>
     <link rel="stylesheet" href="../common_styles.css">
     <link rel="stylesheet" href="reg_log_styles.css">
-<!--    <script src="log_scripts.js"></script>-->
 </head>
 <body>
 <div class="page-container">
-    <div class="card page-block">
+    <div class="card-login page-block">
         <div class="card-header">
             <h1 class="form-name">Войти</h1>
         </div>
         <div class="card-body">
             <form class="form-flex" id="loginForm">
-                <input class="inp-round" type="text" name="login" placeholder="Введите логин" required>
-                <input class="inp-round" type="password" name="password" placeholder="Введите пароль" required>
+                <label>
+                    <input class="inp-round" type="text" name="login" placeholder="Введите логин" required>
+                </label>
+                <label>
+                    <input class="inp-round" type="password" name="password" placeholder="Введите пароль" required>
+                </label>
                 <button class="submit-btn" type="submit" name="login-btn" id="login-btn">Войти</button>
             </form>
         </div>

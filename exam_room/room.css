@@ -1,4 +1,50 @@
 .scroll {
-    height: 200px;
+    height: 33%;
     overflow: auto;
+}
+
+.name-field {
+    max-width: 89%;
+    display: inline-flex;
+    padding-left: 5%;
+    padding-right: 5%;
+    justify-content: space-between;
+
+    margin-top: 4%;
+    margin-bottom: 4%;
+
+    border-radius: 5px;
+    /*border: 1px solid gray;*/
+    width: 100%;
+
+    background: hsl(0deg 0% 100% / 50%)
+
+}
+
+.name-field-paragraph {
+    display: inline-block;
+}
+
+.queues {
+    width: 33%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.ticket-image {
+    object-fit: scale-down;
+}
+
+.submit-div {
+    transition: 0.2s;
+    color: black;
+    background-color: #19a7ce;
+}
+
+.queue-name {
+    margin-top: -3%;
+    background-color: #146c94;
+    color: white;
+    border-radius: 5px;
 }
