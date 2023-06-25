@@ -30,9 +30,6 @@
     padding: 0 20px;
 }
 
-.settings {
-    padding: 0 20px;
-}
 
 .questions-header {
     display: flex;
@@ -93,4 +90,14 @@
 .add-questions {
     margin-top: auto;
     padding: 10px;
+}
+
+#create-form {
+    display: flex;
+    flex-direction: column;
+    padding: 0 20px;
+}
+
+#create-button {
+    margin-top: auto;
 }

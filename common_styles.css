@@ -97,7 +97,7 @@ body {
     text-align: center;
 }
 
-button {
+.button {
     margin: auto;
     background-color: #19A7CE;
     border: none;
@@ -115,7 +115,7 @@ button {
     margin-top: 140px;
 }
 
-button:hover {
+.button:hover {
     background-color: #146C94;
     cursor: pointer;
 }
@@ -191,9 +191,6 @@ button:hover {
 .full-name {
     display: block;
 }
-
-
-
 
 
 .inp-round {
