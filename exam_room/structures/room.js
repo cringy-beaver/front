@@ -185,9 +185,10 @@ export class Room {
             return
         }
         const student = window.roomEnities['student'];
+        student.textContent = ''
         student.appendChild(this.getUserNameDiv(user, false, true));
         const owner = User.fromJson(window.roomEnities['user']);
-        owner.drawTask(user.task);
+        owner.drawTask(user.task, true);
     }
 
     updateSubmittingUserQueue(user) {
@@ -215,6 +216,8 @@ export class Room {
         const student = window.roomEnities['student'];
         ticket.innerHTML = "";
         student.innerHTML = "";
+        student.textContent = 'Здесь будет имя сдающего'
+        ticket.textContent = 'Здесь будет билет сдающего'
     }
 
     createDeleteButton(id){
