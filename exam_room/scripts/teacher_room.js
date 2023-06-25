@@ -129,5 +129,7 @@ function finishStudent(){
 roomIdField.addEventListener("click", async () => {
     try {
         await navigator.clipboard.writeText(room.id);
-    } catch (err) {}
+    } catch (err) {
+        console.log(err);
+    }
 });
